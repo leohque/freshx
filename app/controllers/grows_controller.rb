@@ -15,6 +15,7 @@ class GrowsController < ApplicationController
   def create
     @grow = Grow.new(grow_params)
     @grow.user = current_user # link the new grow to the current_user
+
     if @grow.save
       redirect_to grow_path(@grow)
     else
@@ -29,6 +30,7 @@ class GrowsController < ApplicationController
   def update
     @grow = Grow.find(params[:id])
     @grow.update(grow_params)
+    redirect_to grow_path(@grow)
   end
 
   def delete_photo
