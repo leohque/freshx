@@ -30,3 +30,6 @@ end
 
 # Users
 gem 'devise'
+
+# Geocoding
+gem 'geocoder'
