@@ -14,7 +14,12 @@ class GrowsController < ApplicationController
 
   def create
     @grow = Grow.new(grow_params)
-    @grow.save
+    @grow.user = current_user # link the new grow to the current_user
+    if @grow.save
+      redirect_to grow_path(@grow)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,12 +28,21 @@ class GrowsController < ApplicationController
 
   def update
     @grow = Grow.find(params[:id])
-    @grow.update
+    @grow.update(grow_params)
+  end
+
+  def delete_photo
+    photo_index = params[:photo_index]
+    @grow = Grow.find(params[:grow_id])
+
+    @grow.photos[photo_index.to_i].purge
+    redirect_to edit_grow_path(@grow)
   end
 
   def destroy
     @grow = Grow.find(params[:id])
     @grow.destroy
+    redirect_to grows_path
   end
 
   private
