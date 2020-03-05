@@ -4,8 +4,6 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :location, presence: true
 
-  geocoded_by :location
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
