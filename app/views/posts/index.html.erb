@@ -5,10 +5,14 @@
 <br>
 <br>
 <% @posts.each do |post| %>
-  <li> <%= link_to post.content, post_path(post) %> <%= link_to "LIKE!!!", likes_path(post), method: :post %></li>
-
+ <% if current_user.likes.find_by(post_id: post.id)%>
+    <li> <%= link_to post.content, post_path(post) %> <%= link_to ('<i class="fas fa-heart"></i>').html_safe, post_likes_path(post), method: :post %> </li>
+  <% else %>
+    <li> <%= link_to post.content, post_path(post) %> <%= link_to ('<i class="far fa-heart"></i>').html_safe, post_likes_path(post), method: :post %> </li>
+  <% end %>
 <% end %>
 
 
 <br>
+
 <%= link_to 'Back', root_path, :class => "btn btn-primary"%>
