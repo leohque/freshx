@@ -2,6 +2,23 @@
 <p>Find me in app/views/posts/show.html.erb</p>
 
 <%= @post.content %>
+<% @post.comments.each do |comment| %>
+  <ul> <%= comment.content %>
+  <%= comment.created_at %> </ul>
+<% end %>
+<br>
+<br>
 
+<%= form_for [@post, @comment] do |f| %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Comment", class: 'btn btn-primary' %>
+<% end %>
+
+<br>
+<br>
 <%= link_to "Edit", edit_post_path(@post) %>
 <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %>
