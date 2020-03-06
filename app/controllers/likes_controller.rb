@@ -4,6 +4,11 @@ class LikesController < ApplicationController
     @like.user = current_user
     @like.post = Post.find(params[:post_id])
     @like.save
+
+    # respond_to do |format|
+    #     format.html { redirect_to post_path }
+    #     format.js  # <-- will render `app/views/likes/create.js.erb`
+    # end
   end
 
   def destroy
