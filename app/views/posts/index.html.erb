@@ -5,7 +5,10 @@
 <br>
 <br>
 <% @posts.each do |post| %>
-  <li> <%= link_to post.content, post_path(post) %> </li>
+  <li> <%= link_to post.content, post_path(post) %> <%= link_to "LIKE!!!", likes_path(post), method: :post, data: { confirm: "Added to your favorites" } %></li>
+
 <% end %>
+
+
 <br>
 <%= link_to 'Back', root_path, :class => "btn btn-primary"%>
