@@ -3,3 +3,6 @@
 <p><%= @grow.description %></p>
 <p><%= @grow.location %></p>
 <p><%= @grow.indoors %></p>
+
+<%= link_to "Edit", edit_grow_path(@grow) %>
+<%= link_to "Delete", grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
