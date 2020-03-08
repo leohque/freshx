@@ -1,23 +1,23 @@
 class PlantsController < ApplicationController
 
-  def index
-    @plants = Plant.all
-  end
-
   def show
     @plant = Plant.find(params[:id])
   end
 
   def new
+    @grow = Grow.find(params[:grow_id])
     @plant = Plant.new
   end
 
   def create
+    @grow = Grow.find(params[:grow_id])
     @plant = Plant.new(plant_params)
-    @plant.grow = Grow.find(params[:id])
+    @plant.grow = @grow # belongs_to
+    @plant.user = current_user # belongs_to
+
 
     if @plant.save
-      redirect_to grow_plant_path(@plant)
+      redirect_to grow_path(@grow)
     else
       render :new
     end
@@ -35,6 +35,7 @@ class PlantsController < ApplicationController
   end
 
   def delete
+    @grow = Grow.find(params[:grow_id])
     @plant = Plant.find(params[:id])
     @plant.destroy
     redirect_to grow_plants_path
@@ -43,7 +44,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:name)
+    params.require(:plant).permit(:name, :family, :genre, :species, :birthday, :harvestday)
   end
 
 end

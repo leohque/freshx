@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   resources :comments, only: [:update, :destroy]
 
   resources :grows do
-    resources :plants
+    resources :plants, only: [:new, :create, :edit, :destroy]
   end
+
 
   resources :posts
 
