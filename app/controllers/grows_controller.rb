@@ -50,7 +50,7 @@ class GrowsController < ApplicationController
   private
 
   def grow_params
-    params.require(:grow).permit(:name, :description, :location, :indoors, photos: [])
+    params.require(:grow).permit(:name, :description, :location, :indoors, :photo)
   end
 
 end

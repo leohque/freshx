@@ -7,7 +7,7 @@ class Grow < ApplicationRecord
   has_many :group_grows, dependent: :destroy
   has_many :groups, through: :group_grows
 
-  has_many_attached :photos
+  has_one_attached :photo
 
   validates :name, presence: true
 

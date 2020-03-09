@@ -1,5 +1,11 @@
 <h2>Grow show</h2>
 
+<%= link_to "Back to User", user_profile_path(@grow.user) %>
+
+<% if @grow.photo.attached? %>
+  <%= cl_image_tag @grow.photo.key, width:500, height:500 %>
+<% end %>
+
 <h4>Name: <%= @grow.name %></h4>
 <p>Description: <%= @grow.description %></p>
 <p>Location: <%= @grow.location %></p>
