@@ -38,9 +38,16 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def delete_photo
+    photo_index = params[:photo_index]
+    @post = Post.find(params[:post_id])
+    @post.photos[photo_index.to_i].purge
+    redirect_to edit_post_path(@post)
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :photo_index, photos: [])
   end
 end

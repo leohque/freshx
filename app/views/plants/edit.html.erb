@@ -1,0 +1,12 @@
+<div class="edit-form container">
+  <div class=" form row justify-content-center">
+    <div class="col-md-8">
+      <h1>Edit your plant here</h1>
+
+      <%= render 'form'  %>
+      <br>
+      <button><%= link_to "Delete", @plant, method: :delete%></button>
+
+    </div>
+  </div>
+</div>
