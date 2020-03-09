@@ -15,9 +15,10 @@ Rails.application.routes.draw do
 
 
   resources :grows do
-    resources :plants, only: [:new, :create, :edit, :destroy]
+    resources :plants, only: [:new, :create]
   end
 
+  resources :plants, only: [:edit, :update, :destroy]
 
   resources :posts
 

@@ -17,7 +17,7 @@ class PlantsController < ApplicationController
 
 
     if @plant.save
-      redirect_to grow_path(@grow)
+      redirect_to grow_path(@grow) # here we have grow's id on line 13
     else
       render :new
     end
@@ -31,14 +31,13 @@ class PlantsController < ApplicationController
   def update
     @plant = Plant.find(params[:id])
     @plant.update(plant_params)
-    redirect_to grow_plant_path(@plant)
+    redirect_to grow_path(@plant.grow)
   end
 
-  def delete
-    @grow = Grow.find(params[:grow_id])
+  def destroy
     @plant = Plant.find(params[:id])
     @plant.destroy
-    redirect_to grow_plants_path
+    redirect_to grow_path(@plant.grow) # plant is grow's children (belongs_to)
   end
 
   private
