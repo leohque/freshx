@@ -7,9 +7,12 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: :create
+    resources :likes, only: :create
   end
 
   resources :comments, only: [:update, :destroy]
+  resources :likes, only: :destroy
+
 
   resources :grows do
     resources :plants, only: [:new, :create, :edit, :destroy]
