@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
+  has_one_attached :photo
+
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 end
