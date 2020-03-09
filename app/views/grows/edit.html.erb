@@ -4,6 +4,9 @@
       <h1>Edit your grow here</h1>
 
       <%= render 'form'  %>
+      <br>
+      <button><%= link_to "Delete", @grow, method: :delete%></button>
+
     </div>
   </div>
 </div>

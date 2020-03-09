@@ -1,8 +1,24 @@
 <h2>Grow show</h2>
-<h4><%= @grow.name %></h4>
-<p><%= @grow.description %></p>
-<p><%= @grow.location %></p>
-<p><%= @grow.indoors %></p>
 
+<h4>Name: <%= @grow.name %></h4>
+<p>Description: <%= @grow.description %></p>
+<p>Location: <%= @grow.location %></p>
+<p>Indoors: <%= @grow.indoors %></p>
+
+<%= link_to "Delete", grow_path(@grow), method: :delete %>
 <%= link_to "Edit", edit_grow_path(@grow) %>
-<%= link_to "Delete", grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Add plant", new_plant_path(@grow) %>
+
+
+
+<h2>Plants index</h2>
+<% @grow.plants.each do |plant| %>
+  <h4><%= plant.name %></h4>
+  <p><%= plant.family %></p>
+  <p><%= plant.species %></p>
+  <p><%= plant.genre %></p>
+  <p><%= plant.birthday %></p>
+  <p><%= plant.harvestday %></p>
+  <%= link_to "Delete", plant_path(plant), method: :delete %>
+  <%= link_to "Edit", edit_grow_plant_path(@grow, plant) %>
+<% end %>
