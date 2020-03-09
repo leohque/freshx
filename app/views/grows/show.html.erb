@@ -6,7 +6,7 @@
 
 <%= link_to "Delete", grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
 <%= link_to "Edit", edit_grow_path(@grow) %>
-<%= link_to "Add plant", new_plant_path(@grow) %>
+<%= link_to "Add plant", new_grow_plant_path(@grow) %>
 
 
 
@@ -18,6 +18,6 @@
   <p><%= plant.genre %></p>
   <p><%= plant.birthday %></p>
   <p><%= plant.harvestday %></p>
-  <%= link_to "Delete", plant_path(plant), method: :delete %>
-  <%= link_to "Edit", edit_grow_plant_path(@grow, plant) %>
+  <%= link_to "Delete", plant_path(plant), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_plant_path(plant) %>
 <% end %>
