@@ -1,5 +1,7 @@
-<%= simple_form_for(post) do |f| %>
+<%= simple_form_for post do |f| %>
   <%= f.input :content %>
+  <%= f.association :grow %>
+  <span id="place-for-plants-select"></span>
   <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
   <% f.object.photos.each do |photo| %>
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
