@@ -7,5 +7,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  has_many_attached :photos
+  # validates :photos, attached: true, content_type: [:png, :jpg, :jpeg]
+
   validates :content, presence: true
 end
