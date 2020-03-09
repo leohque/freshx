@@ -12,15 +12,20 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:update, :destroy]
   resources :likes, only: :destroy
+  resources :plants, only: [:edit, :update, :destroy]
+  resources :posts
+
+  resources :groups do
+    member do
+      post "join"
+    end
+  end
 
 
   resources :grows do
     resources :plants, only: [:new, :create]
   end
 
-  resources :plants, only: [:edit, :update, :destroy]
-
-  resources :posts
   delete 'photo', to: 'posts#delete_photo', as: 'delete_photo'
 
   get 'users/edit_profile', to: 'users#edit_profile', as: 'edit_profile'

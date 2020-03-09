@@ -1,0 +1,13 @@
+<h2>Group show</h2>
+
+<h4>Name: <%= @group.name %></h4>
+<p>Description: <%= @group.description %></p>
+<p>Location: <%= @group.location %></p>
+<p>Private: <%= @group.private %></p>
+
+<%= link_to "Delete", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Edit", edit_group_path(@group) %>
+
+<% unless current_user.groups.include?(@group) || @group.user == current_user %>
+  <%= link_to "Join group", join_group_path(@group), method: :post %>
+<% end %>

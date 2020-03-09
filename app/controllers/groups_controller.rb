@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-
+    @group.user = current_user
     if @group.save
       redirect_to group_path(@group)
     else
@@ -32,13 +32,23 @@ class GroupsController < ApplicationController
     redirect_to group_path(@group)
   end
 
+  def join
+    @group = Group.find(params[:id])
+    group_user = GroupUser.new(group_id: @group.id, user_id: current_user.id)
+    group_user.save
+    redirect_to group_path(@group)
+  end
+
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    redirect_to groups_path
   end
 
+  private
+
   def group_params
-    params.require(:group).permit(:name, :description, :location, photos: [])
+    params.require(:group).permit(:name, :description, :location)
   end
 
 end
