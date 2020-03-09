@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'users/edit_profile', to: 'users#update_profile'
   get 'users/:user_id', to: 'users#show', as: 'user_profile'
 
+  get 'map', to: 'pages#map', as: 'map'
 
 
 
