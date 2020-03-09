@@ -1,9 +1,9 @@
-
-<%= form_for(post) do |f| %>
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_field :content, class: 'form-control' %>
-  </div>
-
-  <%= f.submit class: 'btn btn-primary' %>
+<%= simple_form_for(post) do |f| %>
+  <%= f.input :content %>
+  <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
+  <% f.object.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <%= link_to "X", delete_photo_path(photo_index: post.photos.index(photo), post_id: post.id), method: :delete %>
+  <% end %>
+  <%= f.button :submit %>
 <% end %>
