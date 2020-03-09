@@ -1,9 +1,10 @@
-
-<%= form_for(post) do |f| %>
-  <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_field :content, class: 'form-control' %>
-  </div>
-
-  <%= f.submit class: 'btn btn-primary' %>
+<%= simple_form_for post do |f| %>
+  <%= f.input :content %>
+  <%= f.association :grow %>
+  <span id="place-for-plants-select"></span>
+  <%= f.button :submit %>
 <% end %>
+
+
+
+

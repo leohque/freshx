@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
 
   resources :grows do
-    resources :plants, only: [:new, :create]
+    resources :plants, only: [:new, :create, :index]
   end
 
   resources :plants, only: [:edit, :update, :destroy]

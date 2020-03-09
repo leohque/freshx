@@ -1,5 +1,13 @@
 class PlantsController < ApplicationController
 
+  def index
+    @plants = Grow.find(params[:grow_id]).plants
+
+    render json: {
+      plants: @plants
+    }
+  end
+
   def show
     @plant = Plant.find(params[:id])
   end
