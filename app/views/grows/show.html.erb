@@ -1,4 +1,5 @@
 <h2>Grow show</h2>
+
 <h4>Name: <%= @grow.name %></h4>
 <p>Description: <%= @grow.description %></p>
 <p>Location: <%= @grow.location %></p>
@@ -21,4 +22,3 @@
   <%= link_to "Delete", plant_path(plant), method: :delete %>
   <%= link_to "Edit", edit_grow_plant_path(@grow, plant) %>
 <% end %>
-

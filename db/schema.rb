@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_06_173126) do
+
+ActiveRecord::Schema.define(version: 2020_03_09_150832) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -139,6 +141,10 @@ ActiveRecord::Schema.define(version: 2020_03_06_173126) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "grow_id"
+    t.bigint "plant_id"
+    t.index ["grow_id"], name: "index_posts_on_grow_id"
+    t.index ["plant_id"], name: "index_posts_on_plant_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -176,5 +182,7 @@ ActiveRecord::Schema.define(version: 2020_03_06_173126) do
   add_foreign_key "likes", "users"
   add_foreign_key "plants", "grows"
   add_foreign_key "plants", "users"
+  add_foreign_key "posts", "grows"
+  add_foreign_key "posts", "plants"
   add_foreign_key "posts", "users"
 end
