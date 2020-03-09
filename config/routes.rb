@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     member do
+      delete "leave"
       post "join"
     end
   end

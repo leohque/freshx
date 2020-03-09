@@ -39,6 +39,13 @@ class GroupsController < ApplicationController
     redirect_to group_path(@group)
   end
 
+  def leave
+    @group = Group.find(params[:id])
+    @group_user = GroupUser.find_by(group: @group, user: current_user)
+    @group_user.delete
+    redirect_to group_path(@group)
+  end
+
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
