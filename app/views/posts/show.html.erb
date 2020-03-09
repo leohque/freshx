@@ -6,7 +6,7 @@
   <ul>
     <%= comment.content %>
     <%= comment.created_at %> <button class="edit-comment-btn" data-id="<%= comment.id %>"> Edit </button>
-    <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+    <button><%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %></button>
     <div id="edit-form-<%= comment.id %>" class="hidden">
       <%= form_for comment do |f| %>
         <div class="form-group">
