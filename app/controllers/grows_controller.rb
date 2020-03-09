@@ -33,14 +33,6 @@ class GrowsController < ApplicationController
     redirect_to grow_path(@grow)
   end
 
-  # def delete_photo
-  #   photo_index = params[:photo_index]
-  #   @grow = Grow.find(params[:grow_id])
-
-  #   @grow.photos[photo_index.to_i].purge
-  #   redirect_to edit_grow_path(@grow)
-  # end
-
   def destroy
     @grow = Grow.find(params[:id])
     @grow.destroy

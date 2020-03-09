@@ -7,8 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :grow_users, dependent: :destroy
-  has_many :grows, through: :grow_users
+  belongs_to :grow_users, dependent: :destroy
+  has_many :grows, dependent: :destroy
   has_many :plants, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy

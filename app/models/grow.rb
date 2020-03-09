@@ -1,5 +1,4 @@
 class Grow < ApplicationRecord
-
   belongs_to :user
 
   has_many :grow_users, dependent: :destroy
