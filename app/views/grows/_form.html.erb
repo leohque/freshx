@@ -2,15 +2,9 @@
   <%= simple_form_for @grow do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :location %>
+    <%= f.input :location, input_html: { class: 'address-search' } %>
     <%= f.input :indoors %>
-
-    <%# f.object.photos.each do |photo| %>
-      <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <%#= link_to "X", delete_photo_path(photo_index: @grow.photos.index(photo), grow_id: @grow.id), method: :delete %>
-    <%# end %>
-
-    <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= f.input :photo, label: "Add cover photo", as: :file %>
+    <%= f.button :submit, class: 'btn btn-success' %>
   <% end %>
 </div>
