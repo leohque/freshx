@@ -33,3 +33,6 @@ gem 'devise'
 
 # Geocoding
 gem 'geocoder'
+
+# Image Upload with Cloudinary
+gem 'cloudinary', '~> 1.12.0'

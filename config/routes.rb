@@ -21,10 +21,15 @@ Rails.application.routes.draw do
   resources :plants, only: [:edit, :update, :destroy]
 
   resources :posts
+  delete 'photo', to: 'posts#delete_photo', as: 'delete_photo'
 
   get 'users/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
   post 'users/edit_profile', to: 'users#update_profile'
   get 'users/:user_id', to: 'users#show', as: 'user_profile'
+
+  get 'map', to: 'pages#map', as: 'map'
+
+
 
 
 end
