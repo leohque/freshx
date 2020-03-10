@@ -2,6 +2,10 @@ class LikesController < ApplicationController
   def index
     # @likes = Like.where(user: current_user)
     @likes = current_user.likes.order(created_at: :desc)
+    @posts = []
+    @likes.each do |like|
+      @posts << like.post
+    end
     # @likes = policy_scope(Order).order(created_at: :desc) # -> this would give us the same result
 
   end
