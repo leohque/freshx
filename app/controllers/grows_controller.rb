@@ -16,6 +16,8 @@ class GrowsController < ApplicationController
     @grow = Grow.new(grow_params)
     @grow.user = current_user # link the new grow to the current_user
 
+    # to check if valid instead of saving, would be:
+    # if @grow.valid?
     if @grow.save
       redirect_to grow_path(@grow)
     else
