@@ -11,8 +11,11 @@
 <p>Location: <%= @grow.location %></p>
 <p>Indoors: <%= @grow.indoors %></p>
 
-<%= link_to "Delete", grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "Edit", edit_grow_path(@grow) %>
+<% if @grow.user == current_user %>
+  <%= link_to "Delete", grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_grow_path(@grow) %>
+<% end %>
+
 <%= link_to "Add plant", new_grow_plant_path(@grow) %>
 
 
