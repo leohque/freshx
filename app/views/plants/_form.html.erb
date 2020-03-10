@@ -1,16 +1,13 @@
 <div class="container">
-  <%= simple_form_for @plant do |f| %>
+  <%= simple_form_for [@grow, @plant] do |f| %>
     <%= f.input :name %>
+    <!--
     <%= f.input :family %>
     <%= f.input :genre %>
     <%= f.input :species %>
     <%= f.input :birthday %>
     <%= f.input :harvestday %>
-    <% f.object.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <%= link_to "X", delete_photo_path(photo_index: @plant.photos.index(photo), plant_id: @plant.id), method: :delete %>
-    <% end %>
-    <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
+    -->
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>

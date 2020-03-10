@@ -6,6 +6,15 @@
     <%= f.error_notification %>
 
     <div class="form-inputs d-flex">
+      <div>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, width:150, height:150, class: 'mr-3' %>
+        <% else %>
+          <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
+        <% end %>
+        <%= f.input :photo, label: "Edit profile photo", as: :file %>
+      </div>
+
 
       <div>
         <%= f.input :username,

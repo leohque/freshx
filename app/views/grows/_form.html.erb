@@ -2,9 +2,9 @@
   <%= simple_form_for @grow do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :location %>
+    <%= f.input :location, input_html: { class: 'address-search' } %>
     <%= f.input :indoors %>
-    <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= f.input :photo, label: "Add cover photo", as: :file %>
+    <%= f.button :submit, class: 'btn btn-success' %>
   <% end %>
 </div>

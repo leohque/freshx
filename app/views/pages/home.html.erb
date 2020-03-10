@@ -54,6 +54,8 @@
       <h1><strong>Carottes</strong></h1>
       <h2>La petite nouvelle est de retour</h2>
       <p>Daucus carota subsp. sativus popularmente conhecido como cenoura, é uma planta da família das apiáceas conhecida e apreciada desde a época dos antigos gregos e romanos. O nome também designa a raiz dessa planta, raiz esta que é tuberosa, laranja, com uma textura lenhosa e comestível</p>
+
+<p>Find me in app/views/pages/home.html.erb</p>
     </div>
   </div>
 </div>
@@ -71,3 +73,16 @@
 </div>
 
 
+<%= link_to "Create a Post", new_post_path %>
+
+<br>
+
+<% @posts.each do |post| %>
+  <div class="card w-50">
+    Post ID: <%= link_to post.id, post_path(post) %>
+    Content: <%= post.content %>
+    <% post.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  </div>
+<% end %>
