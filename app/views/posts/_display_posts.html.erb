@@ -3,9 +3,9 @@
       <div>
       <% like = current_user.likes.find_by(post_id: post.id) %>
       <% if like %>
-        <%= link_to ('<i class="fas fa-heart"></i>').html_safe, like_path(like), method: :delete %>
+        <%= link_to ('<i class="fas fa-heart"></i>').html_safe, like_path(like), id: post.id, method: :delete, remote: true %>
       <% else %>
-        <%= link_to ('<i class="far fa-heart"></i>').html_safe, post_likes_path(post), method: :post %>
+        <%= link_to ('<i class="far fa-heart"></i>').html_safe, post_likes_path(post), id: post.id, method: :post, remote: true %>
       <% end %>
       </div>
 
