@@ -1,0 +1,58 @@
+<% posts.each do |post| %>
+  <div class="card-post">
+      <div>
+      <% like = current_user.likes.find_by(post_id: post.id) %>
+      <% if like %>
+        <%= link_to ('<i class="fas fa-heart"></i>').html_safe, like_path(like), method: :delete %>
+      <% else %>
+        <%= link_to ('<i class="far fa-heart"></i>').html_safe, post_likes_path(post), method: :post %>
+      <% end %>
+      </div>
+
+    <% post.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+     <div class="card-post-infos .card-post-banner">
+      <div class="profile-tag">
+        <div>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar-rounded" %>
+          <% else %>
+            <%= image_tag("anon.jpeg", class: "avatar-rounded") %>
+          <% end %>
+          <%= link_to post.user.username, user_profile_path(post.user) %>
+        </div>
+      </div>
+      <div class="align-self-center">
+        <%= link_to post.created_at, post_path(post) %>
+      </div>
+    </div>
+
+    <div class="card-post-infos">
+      <div class="card-post-content">
+        <%= post.content %>
+      </div>
+      <div class="card-post-comments">
+        <% post.comments.each do |comment| %>
+            <div class="card-post-comment">
+              <%= comment.content %>
+              <%= comment.created_at %>
+              <button class="edit-comment-btn" data-id="<%= comment.id %>">Edit</button>
+              <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+              <div id="edit-form-<%= comment.id %>" class="hidden">
+                <%= form_for comment do |f| %>
+                  <div class="form-group">
+                    <%= f.label :content, class: 'hidden' %>
+                    <%= f.text_field :content, class: 'form-control' %>
+                  </div>
+
+                  <%= f.submit "Comment", class: 'btn btn-primary' %>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

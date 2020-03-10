@@ -14,19 +14,22 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/streets-v10' // TODO: edit style
     });
 
-      // Current Location
-     map.addControl(new mapboxgl.GeolocateControl({
+
+    // Current Location button
+    map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true,
       },
       trackUserLocation: false,
       showAccuracyCircle: false
-      }
+      },
+
     ));
 
+    // Markers
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // defining the popup info window
@@ -38,13 +41,20 @@ const initMapbox = () => {
       element.style.height = '25px';
 
       new mapboxgl.Marker(element) // passing the custom marker as an element
-        .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup) // adding the info window
-        .addTo(map);
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup) // adding the info window
+      .addTo(map);
     });
 
     fitMapToMarkers(map, markers);
   }
+
+  // This auto-locates user after load
+  setTimeout(function() {
+      $(".mapboxgl-ctrl-geolocate").click();
+  },1000);
 };
 
 export { initMapbox };
+
+
