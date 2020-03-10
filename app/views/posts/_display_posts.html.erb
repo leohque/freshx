@@ -1,0 +1,38 @@
+<% posts.each do |post| %>
+  <div class="card-post">
+      <div>
+      <% like = current_user.likes.find_by(post_id: post.id) %>
+      <% if like %>
+        <%= link_to ('<i class="fas fa-heart"></i>').html_safe, like_path(like), method: :delete %>
+      <% else %>
+        <%= link_to ('<i class="far fa-heart"></i>').html_safe, post_likes_path(post), method: :post %>
+      <% end %>
+      </div>
+
+    <% post.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+     <div class="card-post-infos .card-post-banner">
+      <div class="profile-tag">
+        <div>
+          <img src="<%=image_path'profile.png'%>" class="avatar-rounded" />
+        </div>
+        <div>
+          <%= post.user.username %>
+        </div>
+      </div>
+      <div class="align-self-center">
+        <p>Date/Time</p>
+      </div>
+    </div>
+
+    <div class="card-post-infos">
+      <div>
+        <h1><strong>Carottes</strong></h1>
+        <h2>La petite nouvelle est de retour</h2>
+        <p>Daucus carota subsp. sativus popularmente conhecido como cenoura, é uma planta da família das apiáceas conhecida e apreciada desde a época dos antigos gregos e romanos. O nome também designa a raiz dessa planta, raiz esta que é tuberosa, laranja, com uma textura lenhosa e comestível</p>
+      </div>
+    </div>
+  </div>
+<% end %>
