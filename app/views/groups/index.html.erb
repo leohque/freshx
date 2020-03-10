@@ -1,6 +1,6 @@
 <h2>Groups index</h2>
 <% @groups.each do |group| %>
-  <h4>Name: <%= group.name %></h4>
+  <h4>Name: <%= link_to "#{group.name}", group_path(group.id) %></h4>
   <p>Description: <%= group.description %></p>
   <p>Location: <%= group.location %></p>
   <p>Private: <%= group.private %></p>

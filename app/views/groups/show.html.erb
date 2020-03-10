@@ -5,9 +5,15 @@
 <p>Location: <%= @group.location %></p>
 <p>Private: <%= @group.private %></p>
 
-<%= link_to "Delete", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
-<%= link_to "Edit", edit_group_path(@group) %>
+<% if @group.user == current_user %>
+  <%= link_to "Delete", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_group_path(@group) %>
+<% end %>
 
-<% unless current_user.groups.include?(@group) || @group.user == current_user %>
+<% unless current_user.participating_groups.include?(@group) || @group.user == current_user %>
   <%= link_to "Join group", join_group_path(@group), method: :post %>
+<% end %>
+
+<% if current_user.participating_groups.include?(@group) %>
+      <%= link_to "Leave group", leave_group_path(@group), method: :delete %>
 <% end %>
