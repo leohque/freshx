@@ -24,7 +24,7 @@ const initMapbox = () => {
       },
       trackUserLocation: false,
       showAccuracyCircle: false
-      },
+      }
     ));
 
     const markers = JSON.parse(mapElement.dataset.markers);
