@@ -1,5 +1,6 @@
 .card-post {
-  margin: 20px;
+  display: grid;
+  margin: 15px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -11,6 +12,14 @@
   width: 100%;
   object-fit: cover;
   border-radius: 5px 5px 0px 0px;
+}
+
+.card-post .topright {
+  position: absolute;
+  color:white;
+  top: 10px;
+  right: 40px;
+  font-size: 18px;
 }
 
 .card-post h1 {
@@ -41,32 +50,25 @@
   border-top: 0.5px solid $light-gray;
 }
 
-.card-post-banner{
-  display: flex;
-  height: 100px;
-  align-items: center;
-  align-content: space-between;
-
-}
-// .card-post-banner .box {
-//   display: grid;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-.card-post-infos .card-post-user {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 10px
-}
-
 .profile-tag {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
-
 }
+
+// .card-post-banner {
+//   display: flex;
+//   height: 100px;
+//   align-items: center;
+//   align-content: space-between;
+// }
+
+// .card-post-infos .card-post-user {
+//   position: absolute;
+//   left: 10px;
+//   top: 10px;
+//   width: 40px;
+//   border-radius: 10px
+// }
+
 
