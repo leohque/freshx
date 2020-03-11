@@ -2,7 +2,7 @@
   <div class="card-post mb-3">
 
     <% post.photos.each do |photo| %>
-      <%#= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
 
      <div class="card-post-infos .card-post-banner">
