@@ -1,19 +1,33 @@
-<h2>Group show</h2>
+<div class="container my-3">
+  <div class="container-nav text-right">
+    <% if @group.user == current_user %>
+      <%= link_to "Delete", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Edit", edit_group_path(@group) %>
+    <% end %>
 
-<h4>Name: <%= @group.name %></h4>
-<p>Description: <%= @group.description %></p>
-<p>Location: <%= @group.location %></p>
-<p>Private: <%= @group.private %></p>
+    <% unless current_user.participating_groups.include?(@group) || @group.user == current_user %>
+      <%= link_to "Join group", join_group_path(@group), method: :post %>
+    <% end %>
 
-<% if @group.user == current_user %>
-  <%= link_to "Delete", group_path(@group), method: :delete, data: { confirm: "Are you sure?" } %>
-  <%= link_to "Edit", edit_group_path(@group) %>
-<% end %>
+    <% if current_user.participating_groups.include?(@group) %>
+          <%= link_to "Leave group", leave_group_path(@group), method: :delete %>
+    <% end %>
+  </div>
 
-<% unless current_user.participating_groups.include?(@group) || @group.user == current_user %>
-  <%= link_to "Join group", join_group_path(@group), method: :post %>
-<% end %>
+  <div class="group-info d-flex">
+    <div>
+      <%= cl_image_tag @group.badge.key, width: 150, height: 150 %>
+    </div>
+    <div class="flex-grow-1 px-3">
+      <h2><%= @group.name %></h2>
+      <p><%= @group.description %></p>
+      <% if @group.location.present? %>
+        <p>📍 <%= @group.location %></p>
+      <% end %>
+      <% if @group.private? %>
+        <em>Private Group</em>
+      <% end %>
+    </div>
+  </div>
 
-<% if current_user.participating_groups.include?(@group) %>
-      <%= link_to "Leave group", leave_group_path(@group), method: :delete %>
-<% end %>
+</div>
