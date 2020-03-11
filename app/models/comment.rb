@@ -12,7 +12,8 @@ class Comment < ApplicationRecord
 
   def create_hashtags
     extract_name_hashtags.each do |name|
-      Hashtag.find_or_create_by(name: name)
+      hashtag = Hashtag.find_or_create_by(name: name)
+      hashtags << hashtag unless hashtags.include?(hashtag)
     end
   end
 
