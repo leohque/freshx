@@ -58,6 +58,14 @@
               </div>
             </div>
         <% end %>
+        <%= form_for [post, post.comment] do |f| %>
+          <div class="form-group">
+            <%= f.label :content, class: 'hidden' %>
+            <%= f.text_field :content, placeholder: "Add a comment as #{current_user.email}", class: 'form-control' %>
+          </div>
+
+          <%= f.submit "Comment", class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>
