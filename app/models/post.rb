@@ -32,9 +32,9 @@ class Post < ApplicationRecord
   def content_with_links
     new_content = content
     content.to_s.scan(/#\w+/).each do|hashtag|
-      new_content.gsub!(hashtag, "<a href=''>#{hashtag}</a>")
+      new_content.gsub!(hashtag, "<a href='/posts?hashtag=#{hashtag.gsub("#", "")}'>#{hashtag}</a>")
     end
-
+    new_content
   end
 end
 

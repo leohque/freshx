@@ -31,7 +31,7 @@
 
     <div class="card-post-infos">
       <div class="card-post-content">
-        <%= post.content %>
+        <%= post.content_with_links.html_safe %>
       </div>
       <div class="card-post-comments">
         <% post.comments.each do |comment| %>
