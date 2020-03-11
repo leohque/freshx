@@ -16,7 +16,7 @@
 
   <div class="group-info d-flex">
     <div>
-      <%= cl_image_tag @group.badge.key, width: 150, height: 150 %>
+      <%= cl_image_tag @group.badge.key, width: 150, height: 150, class: 'rounded-circle' %>
     </div>
     <div class="flex-grow-1 px-3">
       <h2><%= @group.name %></h2>

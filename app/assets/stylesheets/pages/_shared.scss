@@ -6,3 +6,18 @@
   display: none;
 }
 
+.posts-feed {
+  width:60%;
+  margin: 3.7rem auto;
+}
+
+.container, #map {
+  margin-top: 3.7rem !important;
+}
+
+
+@media (max-width: 600px) {
+  .posts-feed {
+    width:100%;
+  }
+}

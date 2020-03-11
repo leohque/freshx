@@ -1,0 +1,29 @@
+<div class="navbar w-100 nav-bottom">
+  <ul class="navbar-nav flex-row flex-grow-1 justify-content-between">
+    <li class="nav-item">
+      <%= link_to likes_path, class: "nav-link" do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to map_path, class: "nav-link" do %>
+        <i class="fas fa-map"></i>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_post_path, class: "nav-link" do %>
+        <i class="far fa-plus-square"></i>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to groups_path, class: "nav-link" do %>
+        <i class="fas fa-users"></i>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to grows_path, class: "nav-link" do %>
+        <i class="fas fa-seedling"></i>
+      <% end %>
+    </li>
+  </ul>
+</div>
