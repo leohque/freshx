@@ -15,11 +15,15 @@
 //   height: auto;
 // }
 
+.banner-user {
+  height: 40vh !important;
+  background-size: cover;
+  background-position: center;
+}
 
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
   height: 60vh !important;
 }
 
