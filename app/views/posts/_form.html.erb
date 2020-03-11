@@ -1,15 +1,13 @@
-<div class="container my-3">
-  <%= simple_form_for post do |f| %>
-    <%= f.input :content %>
-    <% if current_user.grows.present? %>
-      <%= f.association :grow %>
-      <span id="place-for-plants-select"></span>
-    <% end %>
-    <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
-    <% f.object.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <%= link_to "X", delete_photo_path(photo_index: post.photos.index(photo), post_id: post.id), method: :delete %>
-    <% end %>
-    <%= f.button :submit %>
+<%= simple_form_for post do |f| %>
+  <%= f.input :content %>
+  <% if current_user.grows.present? %>
+    <%= f.association :grow %>
+    <span id="place-for-plants-select"></span>
   <% end %>
-</div>
+  <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>
+  <% f.object.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <%= link_to "X", delete_photo_path(photo_index: post.photos.index(photo), post_id: post.id), method: :delete %>
+  <% end %>
+  <%= f.button :submit, class: 'btn btn-success' %>
+<% end %>

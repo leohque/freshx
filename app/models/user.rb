@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save :default_values
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :username, presence: true, uniqueness: true
@@ -21,6 +22,8 @@ class User < ApplicationRecord
 
   has_one_attached :photo
   has_one_attached :banner
+
+
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?

@@ -1,70 +1,18 @@
 .card-post {
-  display: grid;
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  border-radius: 5px 5px 5px 5px ;
 }
 
 .card-post > img {
   height: 300px;
   width: 100%;
   object-fit: cover;
-  border-radius: 5px 5px 0px 0px;
 }
 
-.card-post .topright {
-  position: absolute;
-  color:white;
-  top: 10px;
-  right: 40px;
-  font-size: 18px;
-}
-
-.card-post h1 {
-  font-family: 'Palanquin', "sans-serif";
-  font-size: 18px;
-  font-weight: regular;
-  margin: 0;
-}
-
-.card-post h2 {
-  font-family: 'Palanquin', "sans-serif";
-  font-size: 14px;
-  font-weight: regular;
-  margin: 0;
-}
 .card-post p {
   font-size: 12px;
-  opacity: .7;
-  margin: 0;
 }
 
 .card-post .card-post-infos {
-  padding: 6px 6px 6px 6px;
-  position: relative;
-  border-bottom: 0.5px solid $light-gray;
+  padding: 8px;
 }
-
-.profile-tag {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-// .card-post-banner {
-//   display: flex;
-//   height: 100px;
-//   align-items: center;
-//   align-content: space-between;
-// }
-
-// .card-post-infos .card-post-user {
-//   position: absolute;
-//   left: 10px;
-//   top: 10px;
-//   width: 40px;
-//   border-radius: 10px
-// }
-
-

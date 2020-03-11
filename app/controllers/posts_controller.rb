@@ -5,7 +5,7 @@ class PostsController < ApplicationController
       # @posts = Post.joins(:hashtags).where(hashtags: {name: params[:hashtag]})
       @posts = Hashtag.find_by(name: params[:hashtag]).posts
     else
-      @posts = Post.all
+      @posts = Post.all.order(created_at: :desc)
     end
   end
 
