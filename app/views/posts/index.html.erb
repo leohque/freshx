@@ -1,24 +1,6 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
-
-<%= link_to "New post", new_post_path(@post), :class => "btn btn-primary" %>
-<br>
-<br>
-<% @posts.each do |post| %>
-  <% like = current_user.likes.find_by(post_id: post.id) %>
-
-  <% if like %>
-    <li> <%= link_to post.content, post_path(post) %> <%= link_to ('<i class="fas fa-heart"></i>').html_safe, like_path(like), method: :delete %></li>
-  <% else %>
-    <li> <%= link_to post.content, post_path(post) %> <%= link_to ('<i class="far fa-heart"></i>').html_safe, post_likes_path(post), method: :post %></li>
-  <% end %>
-<% end %>
-
-
-<% @posts.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<br>
-
-<%= link_to 'Back', root_path, :class => "btn btn-primary"%>
+<div class="container my-3">
+  <div class="text-center mb-3">
+    Search Bar<br>Hashtag cloud<br>Filters?
+  </div>
+  <%= render 'posts/display_posts', posts: Post.all %>
+</div>

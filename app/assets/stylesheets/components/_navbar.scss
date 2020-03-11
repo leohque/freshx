@@ -1,12 +1,36 @@
-.navbar-lewagon{
+.navbar-fresh {
   justify-content: space-between;
   background: $green;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-fresh i {
+  color: $white;
+}
+
+.navbar-fresh .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-fresh .navbar-brand img {
   width: 40px;
+}
+
+.navbar-brand {
+  color:white;
+  margin-right:5rem;
+}
+
+.navbar-brand:active, .navbar-brand:hover {
+  color: white;
+}
+
+.navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
+
+@media (max-width: 800px) {
+  .navbar-brand {
+    margin-right:1rem !important;
+  }
 }

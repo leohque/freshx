@@ -38,9 +38,6 @@ if (grow_selector) {
   });
 }
 
-
-
-
 // 1 find the grow select
 
 // 2 add event listener for 'change' when it changes

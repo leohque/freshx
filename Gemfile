@@ -37,5 +37,7 @@ gem 'geocoder'
 # Image Upload with Cloudinary
 gem 'cloudinary', '~> 1.12.0'
 
+
 # Seeds
+# Faker
 gem 'faker'

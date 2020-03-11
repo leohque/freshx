@@ -8,10 +8,8 @@
 
 require 'faker'
 require 'open-uri'
-
-
-puts 'Creating 5 profiles...'
-5.times do |i|
+puts 'Creating 10 profiles...'
+10.times do |i|
   bios = [Faker::Quote.yoda, Faker::TvShows::Simpsons.quote,
     Faker::TvShows::RickAndMorty.quote,
     Faker::TvShows::BojackHorseman.quote,
@@ -20,7 +18,6 @@ puts 'Creating 5 profiles...'
     Faker::GreekPhilosophers.quote]
 
   user_test = User.new(
-    name: "#{Faker::Name.unique.name}" + " " + "#{Faker::Name.unique.last_name}",
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
     bio: bios.sample,
     email: Faker::Internet.unique.email,
@@ -31,11 +28,11 @@ puts 'Creating 5 profiles...'
     longitude: rand(-180..80)
   )
   user_test.save!
-  puts "#{i + 1}. #{user.name}"
+puts "#{i + 1}. #{user_test.username}"
 end
 
 puts 'Creating grows...'
-User.all.each do |user| #way to conect the fakeGrow to fakeUser
+User.all.each do |user| #conects the fakeGrow to fakeUser
   plants = [Faker::Food.fruits, Faker::Food.spice, Faker::Food.vegetables]
   grow_test = Grow.new(
     name: plants.sample,
@@ -79,7 +76,5 @@ puts 'Creating 3 groups...'
     private: Faker::Boolean.boolean,
     user: User.all.sample
     )
-
 end
-
 

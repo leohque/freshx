@@ -1,7 +1,7 @@
 class GrowsController < ApplicationController
 
   def index
-    @grows = Grow.all
+    @user = current_user
   end
 
   def show
