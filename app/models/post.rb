@@ -12,7 +12,8 @@ class Post < ApplicationRecord
 
   validates :content, presence: true
 
-  after_commit :create_hashtags
+  after_save :create_hashtags
+  after_update :check_hashtags
 
 
 
@@ -34,6 +35,14 @@ class Post < ApplicationRecord
     new_content
   end
 
+  def check_hashtags
+    new_hashtags = content.to_s.scan(/#\w+/).map{|name| name.gsub("#", "")}
+    hashtags.each do |hashtag|
+      unless new_hashtags.include?(hashtag.name)
+        hashtag.hashtag_posts.find_by(post: self).destroy
+      end
+    end
+  end
   # def self.with_hashtags
   #   joins(:hashtags)
   # end

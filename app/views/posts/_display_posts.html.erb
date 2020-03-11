@@ -42,7 +42,7 @@
       <div class="card-post-comments">
         <% post.comments.each do |comment| %>
             <div class="card-post-comment text-right">
-              <%= comment.content %>
+              <%= comment.content_with_links.html_safe %>
               <%= comment.created_at %>
               <button class="edit-comment-btn" data-id="<%= comment.id %>">Edit</button>
               <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
