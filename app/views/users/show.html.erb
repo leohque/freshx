@@ -1,37 +1,58 @@
-<div class="container">
-  <% if @user == current_user %>
-    <%= link_to "Edit", edit_profile_path %>
-  <% end %>
-  <br>
-
-  <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, width:150, height:150, class: 'mr-3' %>
-  <% else %>
-    <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
-  <% end %>
-
-  <h3 class="mt-3">
-    <%= @user.username %>
-  </h3>
-  <h4>📍 <%= @user.location %></h4>
-    <p><%= @user.bio %></p>
-
-
-  <div>
-    <h2>My Grows</h2>
-    <% if @user.grows.present? %>
-      <%= @user.grows.each do |grow| %>
-        <%= grow.name %>
-      <% end %>
-      <%= link_to "Add another grow?", new_grow_path %>
-    <% else %>
-      <% if @user == current_user %>
-        <p>No grows yet. <%= link_to "Add one?", new_grow_path %></p>
-      <% else %>
-        <p>This user has not yet added any grows.</p>
-      <% end %>
-    <% end %>
+<% if @user.banner.attached? %>
+  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.banner.key %>')">
+    <div class="container text-white">
+    </div>
   </div>
+<% end %>
+
+<div class="container my-3">
+  <div class="profile-header d-flex align-items-start">
+    <div class="profile-avatar">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, width:150, height:150, class: 'mr-3' %>
+      <% else %>
+        <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
+      <% end %>
+
+      <div class="profile-badges my-1">
+        <% if @user.groups %>
+          <% @user.groups.each do |group| %>
+            <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
+          <% end %>
+        <% end %>
+        <% if @user.participating_groups %>
+          <% @user.participating_groups.each do |group| %>
+            <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="profile-edit">
+        <% if @user == current_user %>
+          <%= link_to "Edit Profile", edit_profile_path %>
+        <% end %>
+      </div>
+    </div>
+    <div class="profile-description">
+      <h3>
+        <%= @user.username %>
+      </h3>
+      <h4>📍 <%= @user.location %></h4>
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+  <div class="my-3">
+      <h2>My Grows</h2>
+      <% if @user.grows.present? %>
+        <% @user.grows.each do |grow| %>
+          <%= link_to grow.name, grow_path(grow) %>
+        <% end %>
+        <%= link_to "Add another grow?", new_grow_path %>
+      <% else %>
+        <% if @user == current_user %>
+          <p>No grows yet. <%= link_to "Add one?", new_grow_path %></p>
+        <% else %>
+          <p>This user has not yet added any grows.</p>
+        <% end %>
+      <% end %>
+    </div>
 </div>
-
-

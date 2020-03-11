@@ -3,6 +3,10 @@ class PagesController < ApplicationController
 
   def home
     @posts = Post.all
+
+    if current_user.present?
+      redirect_to posts_path
+    end
   end
 
   def map

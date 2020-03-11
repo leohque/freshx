@@ -1,20 +1,30 @@
-<div class="edit-profile-form d-flex justify-content-center">
-  <div class="form-container w-50 p-4">
+<div class="edit-profile-form d-flex justify-content-center my-3">
+  <div class="form-container">
     <h2>Edit Profile</h2>
 
     <%= simple_form_for(current_user, url: edit_profile_path, html: { method: :update }) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs d-flex">
-      <div>
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, width:150, height:150, class: 'mr-3' %>
-        <% else %>
-          <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
-        <% end %>
-        <%= f.input :photo, label: "Edit profile photo", as: :file %>
-      </div>
+    <div class="form-inputs d-flex flex-wrap">
+      <div class="">
+        <div>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, width:150, height:150, class: 'mr-3' %>
+          <% else %>
+            <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
+          <% end %>
+          <%= f.input :photo, label: "Edit profile photo", as: :file %>
+        </div>
 
+        <div>
+          <% if current_user.banner.attached? %>
+            <%= cl_image_tag current_user.banner.key, width:300, height:150, class: 'mr-3' %>
+          <% else %>
+            <%= image_tag("anon.jpg", width:300, height:150, class: 'mr-3') %>
+          <% end %>
+          <%= f.input :banner, label: "Edit banner", as: :file %>
+        </div>
+      </div>
 
       <div>
         <%= f.input :username,
@@ -31,7 +41,7 @@
 
 
         <div class="form-actions">
-          <%= f.button :submit, "Update", class: 'btn btn-$green rounded shadow' %>
+          <%= f.button :submit, "Update", class: 'btn btn-success rounded shadow' %>
         </div>
       </div>
       <% end %>
