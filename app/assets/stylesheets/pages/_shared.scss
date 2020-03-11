@@ -1,8 +1,7 @@
 html {
-  width: 101%;
+  width: 100%;
   margin:0;
   padding:0;
-  height:100%;
 }
 
 .container a {
@@ -20,6 +19,10 @@ html {
 
 .container, #map {
   margin-top: 3.7rem !important;
+}
+
+.container-profile {
+  padding: 0 1rem;
 }
 
 
