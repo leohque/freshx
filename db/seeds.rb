@@ -69,7 +69,7 @@ end
 puts 'Creating 3 groups...'
 3.times do |i|
   plants = [Faker::Food.fruits, Faker::Food.spice, Faker::Food.vegetables]
-  grow = Grow.new(
+  group = Group.new(
     name: plants.sample,
     description: Faker::Food.description,
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
