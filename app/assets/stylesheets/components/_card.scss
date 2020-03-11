@@ -1,6 +1,5 @@
 .card-post {
   display: grid;
-  margin: 15px;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -8,7 +7,7 @@
 }
 
 .card-post > img {
-  height: 200px;
+  height: 300px;
   width: 100%;
   object-fit: cover;
   border-radius: 5px 5px 0px 0px;
@@ -43,11 +42,8 @@
 
 .card-post .card-post-infos {
   padding: 6px 6px 6px 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
-  border-top: 0.5px solid $light-gray;
+  border-bottom: 0.5px solid $light-gray;
 }
 
 .profile-tag {

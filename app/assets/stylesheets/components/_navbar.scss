@@ -16,9 +16,21 @@
 }
 
 .navbar-brand {
-  margin-right: 10rem;
+  color:white;
+  margin-right:5rem;
+}
+
+.navbar-brand:active, .navbar-brand:hover {
+  color: white;
 }
 
 .navbar-nav .dropdown-menu {
   position: absolute;
+}
+
+
+@media (max-width: 800px) {
+  .navbar-brand {
+    margin-right:1rem !important;
+  }
 }
