@@ -5,7 +5,7 @@
       <div class="group-header">
         <h3>
           <%= link_to group_path(group.id) do %>
-            <%= cl_image_tag group.badge.key, class: 'avatar-large mr-2' %> <%= group.name %>
+            <%#= cl_image_tag group.badge.key, class: 'avatar-large mr-2' %> <%= group.name %>
             <% if group.private? %>
               <i class="fas fa-lock"></i>
             <% end %>
