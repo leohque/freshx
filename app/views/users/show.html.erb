@@ -1,3 +1,10 @@
+<% if @user.banner.attached? %>
+  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.banner.key %>')">
+    <div class="container text-white">
+    </div>
+  </div>
+<% end %>
+
 <div class="container my-3">
   <div class="profile-header d-flex align-items-start">
     <div class="profile-avatar">
