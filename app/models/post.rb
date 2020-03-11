@@ -28,6 +28,14 @@ class Post < ApplicationRecord
       hashtags.find_or_create_by(name: name)
     end
   end
+
+  def content_with_links
+    new_content = content
+    content.to_s.scan(/#\w+/).each do|hashtag|
+      new_content.gsub!(hashtag, "<a href=''>#{hashtag}</a>")
+    end
+
+  end
 end
 
 # current_user.posts.with_hashtags
