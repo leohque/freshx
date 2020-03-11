@@ -15,9 +15,6 @@ class Post < ApplicationRecord
   after_commit :create_hashtags
 
 
-  # def self.with_hashtags
-  #   joins(:hashtags)
-  # end
 
   def extract_name_hashtags
     content.to_s.scan(/#\w+/).map{|name| name.gsub("#", "")}
@@ -36,6 +33,10 @@ class Post < ApplicationRecord
     end
     new_content
   end
+
+  # def self.with_hashtags
+  #   joins(:hashtags)
+  # end
+# current_user.posts.with_hashtags
 end
 
-# current_user.posts.with_hashtags

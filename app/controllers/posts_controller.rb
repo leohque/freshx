@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    if params[:hashtag]
+      # @posts = Post.joins(:hashtags).where(hashtags: {name: params[:hashtag]})
+      @posts = Hashtag.find_by(name: params[:hashtag]).posts
+    else
+      @posts = Post.all
+    end
   end
 
   def show
