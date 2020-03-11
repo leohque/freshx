@@ -2,7 +2,6 @@
   padding: 0 1rem;
   z-index: 2;
   width: 100%;
-  position: fixed;
   height:60px !important;
 }
 
@@ -41,6 +40,7 @@
 }
 
 .nav-bottom {
+  position:fixed;
   bottom:0;
   background: $green;
   color: white;
