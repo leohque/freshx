@@ -14,15 +14,20 @@ class Post < ApplicationRecord
 
   after_commit :create_hashtags
 
+
+  # def self.with_hashtags
+  #   joins(:hashtags)
+  # end
+
   def extract_name_hashtags
     content.to_s.scan(/#\w+/).map{|name| name.gsub("#", "")}
   end
 
   def create_hashtags
     extract_name_hashtags.each do |name|
-      hashtag = Hashtag.create(name: name)
-      HashtagPost.create(post_id: self, hashtag_id: hashtag.id)
+      hashtags.find_or_create_by(name: name)
     end
   end
-
 end
+
+# current_user.posts.with_hashtags
