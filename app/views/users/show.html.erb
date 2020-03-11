@@ -1,6 +1,14 @@
 <% if @user.banner.attached? %>
   <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.banner.key %>')">
     <div class="container text-white">
+
+    </div>
+  </div>
+
+ <%else%>
+  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/assets/default-banner.jpg')">
+    <div class="container text-white">
+
     </div>
   </div>
 <% end %>
