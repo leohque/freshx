@@ -20,7 +20,8 @@ class Post < ApplicationRecord
 
   def create_hashtags
     extract_name_hashtags.each do |name|
-      Hashtag.create(name: name)
+      hashtag = Hashtag.create(name: name)
+      HashtagPost.create(post_id: self, hashtag_id: hashtag.id)
     end
   end
 
