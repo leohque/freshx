@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'faker'
 require 'open-uri'
 puts 'Creating 10 profiles...'
@@ -15,6 +16,7 @@ puts 'Creating 10 profiles...'
     Faker::Quote.famous_last_words,
     Faker::Quotes::Shakespeare.hamlet_quote,
     Faker::GreekPhilosophers.quote]
+
   user_test = User.new(
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
     bio: bios.sample,
@@ -26,10 +28,11 @@ puts 'Creating 10 profiles...'
     longitude: rand(-180..80)
   )
   user_test.save!
-  puts "#{i + 1}. #{user_test.username}"
+puts "#{i + 1}. #{user_test.username}"
 end
+
 puts 'Creating grows...'
-User.all.each do |user| #way to conect the fakeGrow to fakeUser
+User.all.each do |user| #conects the fakeGrow to fakeUser
   plants = [Faker::Food.fruits, Faker::Food.spice, Faker::Food.vegetables]
   grow_test = Grow.new(
     name: plants.sample,
@@ -40,6 +43,7 @@ User.all.each do |user| #way to conect the fakeGrow to fakeUser
     )
   grow_test.save!
 end
+
 puts 'Creating 5 posts...'
 User.all.each do |user|
   5.times do |i|
@@ -61,6 +65,7 @@ User.all.each do |user|
     )
   end
 end
+
 puts 'Creating 3 groups...'
 3.times do |i|
   plants = [Faker::Food.fruits, Faker::Food.spice, Faker::Food.vegetables]
@@ -68,7 +73,8 @@ puts 'Creating 3 groups...'
     name: plants.sample,
     description: Faker::Food.description,
     location: "#{Faker::Address.city}, #{Faker::Address.country}",
-    indoors: Faker::Boolean.boolean,
+    private: Faker::Boolean.boolean,
     user: User.all.sample
     )
 end
+
