@@ -1,7 +1,7 @@
 <%= simple_form_for post do |f| %>
   <%= f.input :content %>
   <% if current_user.grows.present? %>
-    <%= f.association :grow %>
+    <%= f.association :grow, label: "Tag a Grow" %>
     <span id="place-for-plants-select"></span>
   <% end %>
   <%= f.input :photos, label: "Add photos", as: :file, input_html: { multiple: true } %>

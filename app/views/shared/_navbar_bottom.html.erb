@@ -11,9 +11,7 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to new_post_path, class: "nav-link" do %>
-        <i class="far fa-plus-square"></i>
-      <% end %>
+       <a><i class="far fa-plus-square nav-link" data-toggle="modal" data-target="#createPostModal"></i></a>
     </li>
     <li class="nav-item">
       <%= link_to groups_path, class: "nav-link" do %>

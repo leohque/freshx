@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
 
   def index
+    @comment = Comment.new
+
     if params[:hashtag]
       # @posts = Post.joins(:hashtags).where(hashtags: {name: params[:hashtag]})
       @posts = Hashtag.find_by(name: params[:hashtag]).posts
     elsif params[:followed]
       @posts = Post.where(user_id: current_user.followed_users.ids)
+    elsif params[:query].present?
+      @posts = Post.where("content ILIKE ?", "%#{params[:query]}%").order(created_at: :desc)
     else
       @posts = Post.all.order(created_at: :desc)
     end
@@ -18,6 +22,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @grows = current_user.grows
   end
 
   def create
@@ -59,6 +64,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :photo_index, photos: [])
+    params.require(:post).permit(:content, :photo_index, :grow_id, :plant_id, photos: [])
   end
 end
