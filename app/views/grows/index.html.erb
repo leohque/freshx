@@ -1,6 +1,4 @@
 <div class="container my-3">
   <h2>My grows</h2>
-  <% @user.grows.each do |grow| %>
-    <%= link_to "Hello", grow_path(grow) %> (this should be a card)
-  <% end %>
+    <%= render 'display_grows', user: current_user %>
 </div>

@@ -6,6 +6,7 @@ class GrowsController < ApplicationController
 
   def show
     @grow = Grow.find(params[:id])
+    @participating = GrowUser.where(grow: @grow)
   end
 
   def new

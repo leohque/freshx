@@ -1,13 +1,13 @@
 <% if @user.banner.attached? %>
   <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.banner.key %>')">
-    <div class="container text-white">
+    <div class="text-white">
 
     </div>
   </div>
 
  <%else%>
   <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/assets/default-banner.jpg')">
-    <div class="container text-white">
+    <div class="text-white">
 
     </div>
   </div>
@@ -54,23 +54,6 @@
   </div>
   <div class="my-3">
       <h2>Currently Growing</h2>
-      <% if @user.grows.present? %>
-        <% @user.grows.each do |grow| %>
-          <%= link_to grow_path(grow) do %>
-            <div class="grow-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path grow.photo.key %>)">
-              <%= link_to grow.name, grow_path(grow) %>
-            </div>
-          <% end %>
-        <% end %>
-        <div class="text-right">
-          <%= link_to "Add another grow?", new_grow_path %>
-        </div>
-      <% else %>
-        <% if @user == current_user %>
-          <p>No grows yet. <%= link_to "Add one?", new_grow_path %></p>
-        <% else %>
-          <p>This user has not yet added any grows.</p>
-        <% end %>
-      <% end %>
+      <%= render 'grows/display_grows', user: @user %>
     </div>
 </div>
