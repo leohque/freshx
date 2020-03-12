@@ -1,0 +1,2 @@
+following = document.getElementById('follow-btn');
+following.innerHTML = "<%= j link_to 'Follow', user_followings_path(@user), method: :post, remote: true %>";
