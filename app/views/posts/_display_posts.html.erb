@@ -53,6 +53,11 @@
               </div>
         </div>
         <% end %>
+        <div class="card-post-footer">
+          <% if post.grow_id.present? %>
+            Tagged: <%= link_to post.grow.name, grow_path(post.grow) %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
