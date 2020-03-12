@@ -1,8 +1,17 @@
-post = document.getElementById("comments-post-<%= @post.id %>")
+post = document.getElementById("comments-post-<%= @post.id %>");
 
-post.insertAdjacentHTML("beforeend", "<%= j render 'shared/post_with_comments', comment: @comment %>")
+post.insertAdjacentHTML("beforeend", "<%= j render 'shared/post_with_comments', comment: @comment %>");
 
-document.getElementById("new_comment").reset()
+comment = document.getElementById("comment-<%= @comment.id %>");
+
+comment.querySelector("button");
+
+comment.querySelector("button").addEventListener("click", (event) => {
+  const hiddenDiv = document.getElementById(`edit-form-${event.currentTarget.dataset.id}`);
+  hiddenDiv.classList.toggle("hidden");
+});
+
+document.getElementById("new_comment").reset();
 // insertAdjacentElement to it, a string with inside rubycode
 // j render
 // j

@@ -6,8 +6,7 @@
 
 document.querySelectorAll(".edit-comment-btn").forEach((btn) => {
   btn.addEventListener("click", (event) => {
-    const hiddenDiv = document.getElementById(`edit-form-${btn.dataset.id}`)
+    const hiddenDiv = document.getElementById(`edit-form-${btn.dataset.id}`);
     hiddenDiv.classList.toggle("hidden");
-
   });
 });

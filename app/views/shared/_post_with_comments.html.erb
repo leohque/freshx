@@ -4,7 +4,7 @@
   <button class="edit-comment-btn" data-id="<%= comment.id %>">Edit</button>
   <%= link_to "Delete", comment_path(comment), method: :delete, remote: true %>
   <div id="edit-form-<%= comment.id %>" class="hidden">
-    <%= form_for comment, remote: true do |f| %>
+    <%= form_for comment, method: :patch, remote: true do |f| %>
       <div class="form-group">
         <%= f.label :content, class: 'hidden' %>
         <%= f.text_field :content, class: 'form-control' %>
