@@ -1,0 +1,18 @@
+<div id="comment-<%= comment.id %>" class="card-post-comment text-right">
+  <%= comment.content_with_links.html_safe %>
+  <%= distance_of_time_in_words(comment.created_at, DateTime.now) %>
+  <button class="edit-comment-btn" data-id="<%= comment.id %>">Edit</button>
+  <%= link_to "Delete", comment_path(comment), method: :delete, remote: true %>
+  <div id="edit-form-<%= comment.id %>" class="hidden">
+    <%= form_for comment, method: :patch, remote: true do |f| %>
+      <div class="form-group">
+        <%= f.label :content, class: 'hidden' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<!-- ,data: { confirm: "Are you sure?" } -->
