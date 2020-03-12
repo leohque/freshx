@@ -1,0 +1,10 @@
+post = document.getElementById("comments-post-<%= @post.id %>")
+
+post.insertAdjacentHTML("beforeend", "<%= j render 'shared/post_with_comments', comment: @comment %>")
+
+document.getElementById("new_comment").reset()
+// insertAdjacentElement to it, a string with inside rubycode
+// j render
+// j
+
+// commentbox.value = ""

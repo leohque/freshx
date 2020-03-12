@@ -1,0 +1,5 @@
+comment = document.getElementById("comment-<%= @comment.id %>")
+// form = document.querySelector()
+
+comment.innerHTML = "<%= j render 'shared/post_with_comments', comment: @comment %>"
+
