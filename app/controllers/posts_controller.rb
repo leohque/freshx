@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @grows = current_user.grows
   end
 
   def create
