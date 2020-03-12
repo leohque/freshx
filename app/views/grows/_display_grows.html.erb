@@ -1,11 +1,12 @@
 <% if user.grows.present? %>
   <% user.grows.each do |grow| %>
-    <%= link_to grow_path(grow) do %>
-      <div class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path grow.photo.key %>)">
-        <%= link_to grow.name, grow_path(grow) %>
-      </div>
+    <% link_to grow_path(grow) %>
+      <% if grow.photo.attached? %>
+        <div class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path grow.photo.key %>)"><%= link_to grow.name, grow_path(grow) %></div>
+      <% else %>
+        <div class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path 'default-banner.jpeg' %>')"><%= link_to grow.name, grow_path(grow) %></div>
+      <% end %>
     <% end %>
-  <% end %>
   <div class="text-right">
     <%= link_to "Add another grow?", new_grow_path %>
   </div>
@@ -13,6 +14,6 @@
   <% if user == current_user %>
     <p>No grows yet. <%= link_to "Add one?", new_grow_path %></p>
   <% else %>
-    <p>This user has not yet added any grows.</p>
+    <p>This user has not yet shared any grows.</p>
   <% end %>
 <% end %>

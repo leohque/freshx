@@ -39,28 +39,7 @@
   </div>
   </div>
 
-  <div class="container-content my-3 text-center">
-    <% if @grow.plants.empty? %>
-      <h2>🧐 No plants here... </h2>
-    <% else %>
-      <h2>Currently growing...</h2>
-    <% end %>
-    <div class="plant-cards d-flex justify-content-center">
-    <% @grow.plants.each do |plant| %>
-      <div class="plant-card">
-        <h4><%= plant.name %></h4>
-        <p><%= plant.family %></p>
-        <p><%= plant.species %></p>
-        <p><%= plant.genre %></p>
-        <p><%= plant.birthday %></p>
-        <p><%= plant.harvestday %></p>
-        <%= link_to "Delete", plant_path(plant), method: :delete, data: { confirm: "Are you sure?" } %>
-        <%= link_to "Edit", edit_plant_path(plant) %>
-      </div>
-    <% end %>
-    </div>
-      <%= link_to "Add plant", new_grow_plant_path(@grow) %>
-  </div>
+  <%= render 'plants/display_plants', grow: @grow %>
 
 <div class="posts-feed">
   <%= render 'posts/display_posts', posts: Post.where(grow: @grow).order(created_at: :desc) %>
