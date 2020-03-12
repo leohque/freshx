@@ -4,6 +4,8 @@ class PostsController < ApplicationController
     if params[:hashtag]
       # @posts = Post.joins(:hashtags).where(hashtags: {name: params[:hashtag]})
       @posts = Hashtag.find_by(name: params[:hashtag]).posts
+    elsif params[:followed]
+      @posts = Post.where(user_id: current_user.followed_users.ids)
     else
       @posts = Post.all.order(created_at: :desc)
     end
