@@ -5,8 +5,11 @@ class UsersController < ApplicationController
 
   def update_profile
     @user = current_user
-    @user.update(user_params)
-    redirect_to user_profile_path(current_user)
+    if @user.update(user_params)
+      redirect_to user_profile_path(@user)
+    else
+      render :new
+    end
   end
 
   def edit_profile
@@ -16,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:bio, :location, :username, :photo)
+    params.require(:user).permit(:bio, :location, :username, :photo, :banner)
   end
 end

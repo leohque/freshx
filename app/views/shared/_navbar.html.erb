@@ -1,29 +1,29 @@
 <div class="navbar navbar-fresh">
   <span class="navbar-brand">
-  <%= link_to "Fresh Roots", root_path, class: "navbar-brand" %>
+  <%= link_to "Fresh", root_path, class: "navbar-brand" %>
   </span>
   <ul class="navbar-nav flex-row flex-grow-1 justify-content-between">
-    <li class="nav-item">
-      <%= link_to likes_path, class: "nav-link" do %>
-        <i class="fas fa-heart"></i>
+    <li class="nav-item top-bar-item">
+      <%= link_to root_path, class: "nav-link" do %>
+        <i class="fas fa-home"></i>
       <% end %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item top-bar-item">
       <%= link_to map_path, class: "nav-link" do %>
         <i class="fas fa-map"></i>
       <% end %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item top-bar-item">
       <%= link_to new_post_path, class: "nav-link" do %>
         <i class="far fa-plus-square"></i>
       <% end %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item top-bar-item">
       <%= link_to groups_path, class: "nav-link" do %>
         <i class="fas fa-users"></i>
       <% end %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item top-bar-item">
       <%= link_to grows_path, class: "nav-link" do %>
         <i class="fas fa-seedling"></i>
       <% end %>
@@ -37,6 +37,7 @@
         <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "My Profile", user_profile_path(current_user), class: "dropdown-item" %>
+          <%= link_to "My Saved Posts", likes_path(current_user), class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         </div>
       </li>

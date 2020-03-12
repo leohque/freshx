@@ -14,7 +14,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10' // TODO: edit style
+      style: 'mapbox://styles/cleliabailly/ck7nmmcwi12ft1ipwb645cq6u' // TODO: edit style
     });
 
 

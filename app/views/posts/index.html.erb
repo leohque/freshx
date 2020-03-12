@@ -1,6 +1,24 @@
-<div class="posts-feed my-3">
-  <div class="text-center mb-3">
-    Search Bar<br>Hashtag cloud<br>Filters?
-  </div>
-  <%= render 'posts/display_posts', posts: Post.all %>
+<div class="search input-group w-75 push-down mx-auto">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
+
+      <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary">Action</button>
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div role="separator" class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="posts-feed">
+
+  <%= render 'posts/display_posts', posts: @posts %>
 </div>

@@ -1,10 +1,19 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @grow.photo.key %>')">
-  <div class="container text-white">
-    <h2><%= @grow.name %></h2>
+<% if @grow.photo.attached? %>
+  <div class="banner d-flex align-items-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url('<%= cl_image_path @grow.photo.key %>')">
+    <div class="container text-white">
+      <h2 class="text-center"><%= @grow.name %></h2>
+    </div>
   </div>
-</div>
 
-<div class="container">
+<%else%>
+  <div class="banner d-flex align-items-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url('default-banner.jpg')">
+    <div class="container text-white">
+      <h2 class="text-center"><%= @grow.name %></h2>
+    </div>
+  </div>
+<% end %>
+
+<div class="container-profile">
   <div class="container-header d-flex my-3">
     <div>
       Grown by
@@ -19,6 +28,7 @@
         <%= link_to "Edit", edit_grow_path(@grow) %>
       <% end %>
     </div>
+  </div>
   </div>
 
   <div class="container-content my-3 text-center">
