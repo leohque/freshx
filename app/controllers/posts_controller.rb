@@ -6,6 +6,8 @@ class PostsController < ApplicationController
       @posts = Hashtag.find_by(name: params[:hashtag]).posts
     elsif params[:followed]
       @posts = Post.where(user_id: current_user.followed_users.ids)
+    elsif params[:query].present?
+      @posts = Post.where("content ILIKE ?", "%#{params[:query]}%").order(created_at: :desc)
     else
       @posts = Post.all.order(created_at: :desc)
     end
@@ -18,6 +20,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @grows = current_user.grows
   end
 
   def create
