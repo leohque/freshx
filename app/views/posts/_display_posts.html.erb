@@ -37,17 +37,16 @@
       </div>
       <div class="card-post-comments">
         <% post.comments.each do |comment| %>
-            <div class="card-post-comment text-right">
-              <%= comment.content_with_links.html_safe %>
-              <%= distance_of_time_in_words(comment.created_at, DateTime.now) %>
-              <button class="edit-comment-btn" data-id="<%= comment.id %>">Edit</button>
-              <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
-              <div id="edit-form-<%= comment.id %>" class="hidden">
-                <%= form_for comment do |f| %>
-                  <div class="form-group">
-                    <%= f.label :content, class: 'hidden' %>
-                    <%= f.text_field :content, class: 'form-control' %>
-                  </div>
+        <div class="card-post-comment text-right">
+          <%= "#{distance_of_time_in_words(comment.created_at, DateTime.now)} ago" %>
+          <button class="edit-comment-btn" data-id="<%= comment.id %>">Edit</button>
+          <%= link_to "Delete", comment_path(comment), method: :delete, data: { confirm: "Are you sure?" } %>
+          <div id="edit-form-<%= comment.id %>" class="hidden">
+            <%= form_for comment do |f| %>
+            <div class="form-group">
+              <%= f.label :content, class: 'hidden' %>
+              <%= f.text_field :content, class: 'form-control' %>
+            </div>
 
                   <%= f.submit "Comment", class: 'btn btn-primary' %>
                 <% end %>
