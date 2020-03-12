@@ -33,7 +33,7 @@
 
     <div class="card-post-infos d-flex flex-column">
       <div class="card-post-content">
-        <%= post.content %>
+        <%= post.content_with_links.html_safe %>
       </div>
       <div class="card-post-comments">
         <% post.comments.each do |comment| %>
@@ -48,9 +48,9 @@
               <%= f.text_field :content, class: 'form-control' %>
             </div>
 
-            <%= f.submit "Comment", class: 'btn btn-primary' %>
-            <% end %>
-          </div>
+                  <%= f.submit "Comment", class: 'btn btn-primary' %>
+                <% end %>
+              </div>
         </div>
         <% end %>
       </div>
