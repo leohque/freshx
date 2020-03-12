@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @posts = Post.all
 
     if current_user.present?
       redirect_to posts_path
