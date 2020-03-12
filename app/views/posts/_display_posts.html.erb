@@ -37,17 +37,21 @@
       </div>
 
       <div id="comments-post-<%= post.id %>" class="card-post-comments">
-
         <% post.comments.each do |comment| %>
           <%= render "shared/post_with_comments", comment: comment %>
         <% end %>
-
       </div>
+      
       <div>
         <%= simple_form_for [post, comment], remote: true do |f| %>
           <%= f.input :content, placeholder: "Add a comment as #{current_user.email}", label: false %>
           <%= f.button :submit %>
         <% end %>
+        <div class="card-post-footer">
+          <% if post.grow_id.present? %>
+            Tagged: <%= link_to post.grow.name, grow_path(post.grow) %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

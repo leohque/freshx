@@ -1,12 +1,11 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :username, presence: true, uniqueness: true
   validates :location, presence: true
 
-
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   has_many :grow_users, dependent: :destroy
   has_many :participating_grows, through: :grow_users, source: :grow #rename association for distinguishing
@@ -20,6 +19,12 @@ class User < ApplicationRecord
   has_many :groups, dependent: :destroy
 
 
+  has_many :followings, dependent: :destroy
+  has_many :followers, through: :followings
+
+  has_many :followings_as_follower, class_name: "Following", foreign_key: :follower_id, dependent: :destroy
+  has_many :followed_users, through: :followings_as_follower, source: :user
+
   has_one_attached :photo
   has_one_attached :banner
 
@@ -27,5 +32,4 @@ class User < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
-
 end

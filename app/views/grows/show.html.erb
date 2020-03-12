@@ -13,10 +13,18 @@
   </div>
 <% end %>
 
-<div class="container-profile">
-  <div class="container-header d-flex my-3">
+<div class="container">
+  <div class="container-header d-flex my-1">
     <div>
       Grown by
+      <div class="grow-users">
+            <%= cl_image_tag @grow.user.photo.key, class: 'avatar' %> <%= link_to @grow.user.username, user_profile_path(@grow.user) %>
+        <% if @participating.present? %>
+          <% @participating.each do |user| %>
+            <%= cl_image_tag user.photo.key, class: 'avatar' %> user.username
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <div class="flex-grow-1 text-center">
       <p><%= @grow.description %></p>
@@ -33,19 +41,27 @@
 
   <div class="container-content my-3 text-center">
     <% if @grow.plants.empty? %>
-      <h2>🧐 No plants here... <%= link_to "wanna add one?", new_grow_plant_path(@grow) %></h2>
+      <h2>🧐 No plants here... </h2>
     <% else %>
-      <h2>Here's what we're growing...</h2>
+      <h2>Currently growing...</h2>
     <% end %>
+    <div class="plant-cards d-flex justify-content-center">
     <% @grow.plants.each do |plant| %>
-      <h4><%= plant.name %></h4>
-      <p><%= plant.family %></p>
-      <p><%= plant.species %></p>
-      <p><%= plant.genre %></p>
-      <p><%= plant.birthday %></p>
-      <p><%= plant.harvestday %></p>
-      <%= link_to "Delete", plant_path(plant), method: :delete, data: { confirm: "Are you sure?" } %>
-      <%= link_to "Edit", edit_plant_path(plant) %>
+      <div class="plant-card">
+        <h4><%= plant.name %></h4>
+        <p><%= plant.family %></p>
+        <p><%= plant.species %></p>
+        <p><%= plant.genre %></p>
+        <p><%= plant.birthday %></p>
+        <p><%= plant.harvestday %></p>
+        <%= link_to "Delete", plant_path(plant), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to "Edit", edit_plant_path(plant) %>
+      </div>
     <% end %>
+    </div>
+      <%= link_to "Add plant", new_grow_plant_path(@grow) %>
   </div>
+
+<div class="posts-feed">
+  <%= render 'posts/display_posts', posts: Post.where(grow: @grow).order(created_at: :desc) %>
 </div>
