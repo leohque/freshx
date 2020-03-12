@@ -19,6 +19,12 @@ class User < ApplicationRecord
   has_many :groups, dependent: :destroy
 
 
+  has_many :followings, dependent: :destroy
+  has_many :followers, through: :followings
+
+  has_many :followings_as_follower, class_name: "Following", foreign_key: :follower_id, dependent: :destroy
+  has_many :followed_users, through: :followings_as_follower, source: :user
+
   has_one_attached :photo
   has_one_attached :banner
 

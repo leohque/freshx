@@ -2,5 +2,6 @@
 <%= render 'filters' %>
 
 <div class="posts-feed">
+  <%= link_to "Following", posts_path(followed: true) %>
   <%= render 'display_posts', posts: @posts %>
 </div>
