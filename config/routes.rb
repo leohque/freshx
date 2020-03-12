@@ -10,10 +10,16 @@ Rails.application.routes.draw do
     resources :likes, only: :create
   end
 
+  resources :users, shallow: true do
+    resources :followings, only: [:create, :destroy]
+  end
+
   resources :comments, only: [:update, :destroy]
   resources :likes, only: [:index, :destroy]
   resources :plants, only: [:edit, :update, :destroy]
   resources :posts
+
+
 
   resources :groups do
     member do

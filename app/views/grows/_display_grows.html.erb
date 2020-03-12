@@ -1,9 +1,15 @@
 <% if user.grows.present? %>
   <% user.grows.each do |grow| %>
     <%= link_to grow_path(grow) do %>
-      <div class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path grow.photo.key %>)">
-        <%= link_to grow.name, grow_path(grow) %>
-      </div>
+      <% if grow.photo.attached? %>
+        <div class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path grow.photo.key %>)">
+          <%= link_to grow.name, grow_path(grow) %>
+        </div>
+      <% else %>
+        <div class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/assets/default-banner.jpg')">
+          <%= link_to grow.name, grow_path(grow) %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
   <div class="text-right">
