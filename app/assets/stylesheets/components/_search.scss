@@ -1,3 +1,18 @@
 .search {
 
 }
+
+.filters a {
+  color: $green;
+  padding: 0.2rem 1rem;
+  margin: 0 4px;
+  border: 1px solid $green;
+  transition: 0.5s all;
+  border-radius: $border-radius;
+}
+
+.filters a:hover {
+  text-decoration: none;
+  color: white;
+  background-color: $green;
+}

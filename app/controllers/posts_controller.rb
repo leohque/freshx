@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
   def index
-    if params[:hashtag]
-      # @posts = Post.joins(:hashtags).where(hashtags: {name: params[:hashtag]})
-      @posts = Hashtag.find_by(name: params[:hashtag]).posts
+    if params[:hashtag].present?
+      @posts = Hashtag.find_by(name: params[:hashtag]).posts.order(created_at: :desc)
+    elsif params[:query].present?
+      @posts = Post.where("content ILIKE ?", "%#{params[:query]}%").order(created_at: :desc)
     else
       @posts = Post.all.order(created_at: :desc)
     end

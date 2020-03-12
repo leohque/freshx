@@ -1,0 +1,9 @@
+<div class="search w-50 my-3 mx-auto">
+      <%= form_tag posts_path, method: :get, class: 'form-inline d-flex' do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: 'form-control w-100',
+            placeholder: "Search for anything..."
+          %>
+      <% end %>
+</div>
