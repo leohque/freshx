@@ -1,0 +1,2 @@
+following = document.getElementById('follow-btn');
+following.innerHTML = "<%= j link_to 'Unfollow', following_path(@following), method: :delete, remote: true %>";
