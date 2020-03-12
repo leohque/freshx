@@ -3,6 +3,11 @@
     <div class="card-post-banner p-2">
       <div class="profile-tag d-flex justify-content-between align-items-start">
         <div>
+          <% if post.user == current_user %>
+            <% text = "" %>
+          <% elsif Following.where(follower_id: current_user.id, user_id: post.user.id) %>
+          <% end %>
+          <%= link_to "Following", posts_path(followed: true) %>
           <% if post.user.photo.attached? %>
             <%= cl_image_tag post.user.photo.key, class: "avatar" %>
           <% else %>
