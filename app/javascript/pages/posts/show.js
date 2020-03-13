@@ -4,9 +4,9 @@
 // find the form div with the id using the btn dataset
 // toggle the hidden class of the form div
 
-document.querySelectorAll(".edit-comment-btn").forEach((btn) => {
-  btn.addEventListener("click", (event) => {
-    const hiddenDiv = document.getElementById(`edit-form-${btn.dataset.id}`);
-    hiddenDiv.classList.toggle("hidden");
-  });
-});
+// document.querySelectorAll(".edit-comment-btn").forEach((btn) => {
+//   btn.addEventListener("click", (event) => {
+//     const hiddenDiv = document.getElementById(`edit-form-${btn.dataset.id}`);
+//     hiddenDiv.classList.toggle("hidden");
+//   });
+// });

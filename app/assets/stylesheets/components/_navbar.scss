@@ -43,6 +43,14 @@
   position: absolute;
 }
 
+.navbar-nav .dropdown-menu a {
+  color: #3B8514;
+}
+
+.navbar-nav .dropdown-menu :hover{
+  color: $green;
+}
+
 .nav-bottom {
   position:fixed;
   bottom:0;
@@ -51,7 +59,7 @@
   visibility: hidden;
   padding: 0.5rem 1rem;
   font-size:1.3rem;
-  a { color: white; }
+  a { color: $green; }
 }
 
 .nav-link {
