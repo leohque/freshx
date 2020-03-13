@@ -1,0 +1,16 @@
+#follow-btn {
+  a {
+  background-color: $green;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: $border-radius;
+  transition: 0.3s all;
+  font-size: 16px;
+  font-family: $body-font;
+  font-weight: 400;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
