@@ -12,7 +12,14 @@
   </div>
 <% end %>
 
-<div class="container-profile my-3 mx-auto">
+
+<div class="profile-edit text-right p-2 mr-2">
+  <% if @user == current_user %>
+    <%= link_to "Edit Profile", edit_profile_path %>
+  <% end %>
+</div>
+
+<div class="container-profile mx-auto">
   <div class="profile-header d-flex">
     <div class="wrapper">
         <div class="profile-avatar">
@@ -24,7 +31,19 @@
         </div>
     </div>
     <div class="profile-description flex-grow-1">
-      <h3>
+      <div class="profile-badges my-1">
+        <% if @user.groups %>
+          <% @user.groups.each do |group| %>
+            <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
+          <% end %>
+        <% end %>
+        <% if @user.participating_groups %>
+          <% @user.participating_groups.each do |group| %>
+            <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
+          <% end %>
+        <% end %>
+      </div>
+      <h2>
         <%= @user.username %>
         <% if current_user != @user %>
           <div id="follow-btn">
@@ -35,32 +54,21 @@
             <% end %>
           </div>
         <% end %>
-      </h3>
-      <h4>📍 <%= @user.location %></h4>
-      <div class="profile-badges my-1">
-            <% if @user.groups %>
-              <% @user.groups.each do |group| %>
-                <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
-              <% end %>
-            <% end %>
-            <% if @user.participating_groups %>
-              <% @user.participating_groups.each do |group| %>
-                <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
-              <% end %>
-            <% end %>
-          </div>
-    </div>
-    <div class="profile-edit">
-        <% if @user == current_user %>
-          <%= link_to "Edit Profile", edit_profile_path %>
-        <% end %>
+      </h2>
+      <p>📍<%= @user.location %></p>
     </div>
   </div>
+
   <div class="profile-bio mt-3">
     <p><%= @user.bio %></p>
   </div>
-  <div class="my-3">
-      <h2>Currently Growing</h2>
-      <%= render 'grows/display_grows', user: @user %>
-    </div>
+</div>
+
+<div class="posts-feed">
+  <div class="profile-grows">
+    <h2 class="text-center">Currently Growing</h2>
+    <%= render 'grows/display_grows', user: @user %>
+  </div>
+
+  <%= render 'posts/display_posts', posts: @user.posts, comment: @comment %>
 </div>

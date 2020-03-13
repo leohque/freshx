@@ -50,7 +50,7 @@
       <div class="card-post-comment-box">
         <%= simple_form_for [post, comment], remote: true, class: 'form-inline' do |f| %>
           <%= f.input :content, placeholder: "Add a comment...", label: false, class: 'form-control' %>
-          <%= f.button :submit, class: 'btn btn-success form-control' %>
+          <%= f.button :submit, value: "Comment", class: 'btn btn-success form-control' %>
         <% end %>
       </div>
 
