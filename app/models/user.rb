@@ -1,7 +1,20 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :username, presence: true, uniqueness: true
+  validates :username,
+            presence: {:message => "Please choose a username.", on: :update},
+            uniqueness: {:message => "Username already exisits. Please select a different one."},
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
+
+validates :email,
+      presence: {:message => "Please enter your Email Address."},
+      uniqueness: {:message => "Email Address already exisits. Please Login!"}
+
+    validate :email_regex
+        def email_regex
+            if email.present? and not email.match(/\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/)
+                errors.add :email, "Please enter a valid Email Address."
+        end
   validates :location, presence: true
 
   devise :database_authenticatable, :registerable,
