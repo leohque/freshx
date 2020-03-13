@@ -3,11 +3,7 @@
     <div class="card-post-banner p-2">
       <div class="profile-tag d-flex justify-content-between align-items-start">
         <div>
-          <% if post.user.photo.attached? %>
-            <%= cl_image_tag post.user.photo.key, class: "avatar" %>
-          <% else %>
-            <%= image_tag("anon.jpeg", class: "avatar") %>
-          <% end %>
+          <%= render 'users/profile_picture', user: post.user %>
           <%= link_to post.user.username, user_profile_path(post.user) %><br>
           <%= link_to "#{distance_of_time_in_words(post.created_at, DateTime.now)} ago", post_path(post) %>
         </div>
@@ -36,23 +32,29 @@
         <%= post.content_with_links.html_safe %>
       </div>
 
-      <div id="comments-post-<%= post.id %>" class="card-post-comments">
-        <% post.comments.each do |comment| %>
+      <div id="comments-post-<%= post.id %>" class="card-post-comments d-flex flex-column align-items-start">
+        <% if post.comments.size >= 6 %>
+          <%= link_to "See all comments", post_path(post) %>
+        <% end %>
+        <% post.comments.last(5).each do |comment| %>
           <%= render "shared/post_with_comments", comment: comment %>
         <% end %>
       </div>
-      
-      <div>
-        <%= simple_form_for [post, comment], remote: true do |f| %>
-          <%= f.input :content, placeholder: "Add a comment as #{current_user.email}", label: false %>
-          <%= f.button :submit %>
-        <% end %>
-        <div class="card-post-footer">
+
+      <div class="card-post-footer my-2">
           <% if post.grow_id.present? %>
             Tagged: <%= link_to post.grow.name, grow_path(post.grow) %>
           <% end %>
-        </div>
       </div>
+
+      <div class="card-post-comment-box">
+        <%= simple_form_for [post, comment], remote: true, class: 'form-inline' do |f| %>
+          <%= f.input :content, placeholder: "Add a comment...", label: false, class: 'form-control' %>
+          <%= f.button :submit, class: 'btn btn-success form-control' %>
+        <% end %>
+      </div>
+
+
     </div>
   </div>
 <% end %>

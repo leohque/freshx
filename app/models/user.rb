@@ -18,7 +18,6 @@ class User < ApplicationRecord
   has_many :participating_groups, through: :group_users, source: :group #rename association for distinguishing
   has_many :groups, dependent: :destroy
 
-
   has_many :followings, dependent: :destroy
   has_many :followers, through: :followings
 
@@ -28,8 +27,14 @@ class User < ApplicationRecord
   has_one_attached :photo
   has_one_attached :banner
 
-
-
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
+
+  # def is_following?(user)
+  #   followed_users.include?(user)
+  # end
+
+  def following_record(user)
+    followings_as_follower.find_by(user: user)
+  end
 end

@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
+
+    @following = current_user.following_record(@user)
   end
 
-  def update_profile
+  def update
     @user = current_user
     if @user.update(user_params)
       redirect_to user_profile_path(@user)

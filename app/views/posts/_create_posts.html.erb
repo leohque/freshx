@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="createPostLongTitle">Share something</h5>
+        <h4 class="modal-title" id="createPostLongTitle">Create a Post</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -44,9 +44,8 @@
               }
 
               newElement = '<div class="form-group select optional post_plant">';
-              newElement += '<label class="select optional" for="post_plant_id">Tag a Plant</label>'
               newElement += '<select class="form-control select optional" name="post[plant_id]" id="post_plant_id">';
-              newElement += '<option value=""></option>';
+              newElement += '<option value="">Tag a Plant</option>';
 
               data.plants.forEach((plant) => {
                 newElement += `<option value="${plant.id}">${plant.name}</option>`

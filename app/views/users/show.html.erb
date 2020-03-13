@@ -4,22 +4,20 @@
 
     </div>
   </div>
-
  <%else%>
-  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/assets/default-banner.jpg')">
+  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('default-banner.jpeg')">
     <div class="text-white">
 
     </div>
   </div>
 <% end %>
 
-
 <div class="container-profile my-3 mx-auto">
   <div class="profile-header d-flex">
     <div class="wrapper">
         <div class="profile-avatar">
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, width:150, height:150, class: 'mr-3' %>
+          <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3 rounded' %>
           <% else %>
             <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
           <% end %>
@@ -28,6 +26,15 @@
     <div class="profile-description flex-grow-1">
       <h3>
         <%= @user.username %>
+        <% if current_user != @user %>
+          <div id="follow-btn">
+            <% if @following %>
+              <%= link_to "Unfollow", following_path(@following), method: :delete, remote: true %>
+            <% else %>
+              <%= link_to "Follow", user_followings_path(@user), method: :post, remote: true %>
+            <% end %>
+          </div>
+        <% end %>
       </h3>
       <h4>📍 <%= @user.location %></h4>
       <div class="profile-badges my-1">

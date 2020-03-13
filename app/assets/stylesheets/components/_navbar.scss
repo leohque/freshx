@@ -50,6 +50,10 @@
   a { color: white; }
 }
 
+.nav-link {
+  cursor: pointer;
+}
+
 @media (max-width: 500px) {
   .nav-bottom {
     visibility: visible;
