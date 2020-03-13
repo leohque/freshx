@@ -43,6 +43,14 @@
   position: absolute;
 }
 
+.navbar-nav .dropdown-menu a {
+  color: #3B8514;
+}
+
+.navbar-nav .dropdown-menu :hover{
+  color: $green;
+}
+
 .nav-bottom {
   position:fixed;
   bottom:0;
