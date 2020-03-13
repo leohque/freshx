@@ -3,6 +3,23 @@ html {
   margin:0;
   padding:0;
 }
+a {
+  color: #3B8514;
+}
+
+a, a:link, a:focus, a:active{
+  color: #3B8514;
+  text-decoration:none;
+  cursor: pointer;
+}
+
+a:hover{
+  color: $green;
+}
+
+a :hover {
+  color: $green
+}
 
 h2 {
   font-size:3rem;

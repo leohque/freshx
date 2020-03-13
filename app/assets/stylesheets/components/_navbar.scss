@@ -27,6 +27,10 @@
   padding: 0;
 }
 
+.navbar-fresh :hover {
+  color: white;
+}
+
 .top-bar-item {
   font-size:1.3rem;
 }
@@ -42,7 +46,7 @@
 .nav-bottom {
   position:fixed;
   bottom:0;
-  background: $green;
+  background: $white;
   color: white;
   visibility: hidden;
   padding: 0.5rem 1rem;
