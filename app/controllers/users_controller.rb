@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @following = current_user.following_record(@user)
   end
 
-  def update_profile
+  def update
     @user = current_user
     if @user.update(user_params)
       redirect_to user_profile_path(@user)
