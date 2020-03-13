@@ -7,10 +7,17 @@
   transition: 0.3s all;
   font-size: 16px;
   font-family: $body-font;
-  font-weight: 400;
   }
 
   a:hover {
     text-decoration: none;
+  }
+
+  i {
+    font-size: 14px;
+  }
+
+  i:hover {
+    color: white;
   }
 }
