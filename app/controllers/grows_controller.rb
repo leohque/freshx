@@ -5,6 +5,7 @@ class GrowsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @grow = Grow.find(params[:id])
     @participating = GrowUser.where(grow: @grow)
   end
@@ -15,7 +16,7 @@ class GrowsController < ApplicationController
 
   def create
     @grow = Grow.new(grow_params)
-    @grow.user = current_user # link the new grow to the current_user
+    @grow.user = current_user
 
     # to check if valid instead of saving, would be:
     # if @grow.valid?

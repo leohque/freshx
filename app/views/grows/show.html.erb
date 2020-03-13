@@ -42,5 +42,5 @@
   <%= render 'plants/display_plants', grow: @grow %>
 
 <div class="posts-feed">
-  <%= render 'posts/display_posts', posts: Post.where(grow: @grow).order(created_at: :desc) %>
+  <%= render 'posts/display_posts', posts: Post.where(grow: @grow).order(created_at: :desc), comment: @comment %>
 </div>
