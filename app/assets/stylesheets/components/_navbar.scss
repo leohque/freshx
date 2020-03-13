@@ -49,6 +49,9 @@
 
 .navbar-nav .dropdown-menu :hover, :active{
   color: $green;
+}
+
+.navbar-nav .dropdown-menu a {
   background-color: white;
 }
 
