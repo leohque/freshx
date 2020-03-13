@@ -5,10 +5,11 @@
 .filters a {
   color: $green;
   padding: 0.2rem 1rem;
-  margin: 0 4px;
+  margin: 3px 3px 3px 3px;
   border: 1px solid $green;
   transition: 0.5s all;
   border-radius: $border-radius;
+
 }
 
 .filters a:hover {
