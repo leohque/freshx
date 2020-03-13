@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
     if params[:hashtag]
       # @posts = Post.joins(:hashtags).where(hashtags: {name: params[:hashtag]})
-      @posts = Hashtag.find_by(name: params[:hashtag]).posts
+      @posts = Hashtag.find_by(name: params[:hashtag]).try(:posts) || []
     elsif params[:followed]
       @posts = Post.where(user_id: current_user.followed_users.ids)
     elsif params[:query].present?
