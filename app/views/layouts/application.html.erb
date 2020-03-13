@@ -10,12 +10,18 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/navbar' %>
+    <% else %>
+      <%= render 'shared/navbar_offline' %>
+    <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= render 'shared/flashes' %>
-    <%= render 'shared/navbar_bottom' %>
-    <%= render 'posts/create_posts' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/navbar_bottom' %>
+      <%= render 'posts/create_posts' %>
+    <% end %>
   </body>
 </html>

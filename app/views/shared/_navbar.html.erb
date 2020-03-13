@@ -3,35 +3,35 @@
   <%= link_to "Fresh", root_path, class: "navbar-brand" %>
   </span>
   <ul class="navbar-nav flex-row flex-grow-1 justify-content-between align-items-center">
-    <li class="nav-item top-bar-item">
-      <%= link_to root_path, class: "nav-link" do %>
-        <i class="fas fa-home"></i>
-      <% end %>
-    </li>
-    <li class="nav-item top-bar-item">
-      <%= link_to map_path, class: "nav-link" do %>
-        <i class="fas fa-map"></i>
-      <% end %>
-    </li>
-    <li class="nav-item top-bar-item">
-      <%= link_to 'javascript:' do %>
-       <i class="far fa-plus-square nav-link" data-toggle="modal" data-target="#createPostModal"></i></a>
-      <% end %>
-    </li>
-    <li class="nav-item top-bar-item">
-      <%= link_to groups_path, class: "nav-link" do %>
-        <i class="fas fa-users"></i>
-      <% end %>
-    </li>
-    <li class="nav-item top-bar-item">
-      <%= link_to grows_path, class: "nav-link" do %>
-        <i class="fas fa-seedling"></i>
-      <% end %>
-    </li>
+      <li class="nav-item top-bar-item">
+        <%= link_to root_path, class: "nav-link" do %>
+          <i class="fas fa-home"></i>
+        <% end %>
+      </li>
+      <li class="nav-item top-bar-item">
+        <%= link_to map_path, class: "nav-link" do %>
+          <i class="fas fa-map"></i>
+        <% end %>
+      </li>
+      <li class="nav-item top-bar-item">
+        <%= link_to 'javascript:' do %>
+         <i class="far fa-plus-square nav-link" data-toggle="modal" data-target="#createPostModal"></i>
+        <% end %>
+      </li>
+      <li class="nav-item top-bar-item">
+        <%= link_to groups_path, class: "nav-link" do %>
+          <i class="fas fa-users"></i>
+        <% end %>
+      </li>
+      <li class="nav-item top-bar-item">
+        <%= link_to grows_path, class: "nav-link" do %>
+          <i class="fas fa-seedling"></i>
+        <% end %>
+      </li>
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
         <% if current_user.photo.attached? %>
-          <%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag("anon.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
         <% end %>

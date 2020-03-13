@@ -6,7 +6,7 @@
   </div>
 
 <%else%>
-  <div class="banner d-flex align-items-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url('default-banner.jpg')">
+  <div class="banner d-flex align-items-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(<%= image_path 'default_banner.jpeg' %>)">
     <div class="container text-white">
       <h2 class="text-center"><%= @grow.name %></h2>
     </div>
