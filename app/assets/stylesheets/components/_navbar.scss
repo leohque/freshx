@@ -47,8 +47,9 @@
   color: #3B8514;
 }
 
-.navbar-nav .dropdown-menu :hover{
+.navbar-nav .dropdown-menu :hover, :active{
   color: $green;
+  background-color: white;
 }
 
 .nav-bottom {
