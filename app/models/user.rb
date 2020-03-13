@@ -14,6 +14,7 @@ validates :email,
         def email_regex
             if email.present? and not email.match(/\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/)
                 errors.add :email, "Please enter a valid Email Address."
+            end
         end
   validates :location, presence: true
 
@@ -50,5 +51,4 @@ validates :email,
   def following_record(user)
     followings_as_follower.find_by(user: user)
   end
-
 end
