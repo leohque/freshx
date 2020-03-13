@@ -19,9 +19,17 @@ class Comment < ApplicationRecord
 
   def content_with_links
     new_content = content
-    content.to_s.scan(/#\w+/).each do|hashtag|
+    content.to_s.scan(/#\w+/).each do |hashtag|
       new_content.gsub!(hashtag, "<a href='/posts?hashtag=#{hashtag.gsub("#", "")}'>#{hashtag}</a>")
     end
+
+    content.to_s.scan(/@\w+/).each do |username|
+      user = User.find_by(username: username[1..-1])
+      if user
+        new_content.gsub!(username, "<a href='/users/#{user.id}'>#{username}</a>")
+      end
+    end
+
     new_content
   end
 
