@@ -12,13 +12,12 @@
   </div>
 <% end %>
 
-
 <div class="container-profile my-3 mx-auto">
   <div class="profile-header d-flex">
     <div class="wrapper">
         <div class="profile-avatar">
           <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3' %>
+            <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3 rounded' %>
           <% else %>
             <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
           <% end %>
