@@ -30,7 +30,7 @@
     </li>
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
-        <% if @user.photo.attached? %>
+        <% if current_user.photo.attached? %>
           <%= cl_image_tag user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag("anon.jpeg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false) %>
