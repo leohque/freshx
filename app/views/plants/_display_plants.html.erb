@@ -4,19 +4,27 @@
     <% else %>
       <h2>Currently growing...</h2>
     <% end %>
-    <div class="plant-cards d-flex justify-content-center">
+    <div class="plant-cards d-flex justify-content-center flex-wrap">
     <% grow.plants.each do |plant| %>
-      <div class="plant-card">
-        <h4><%= plant.name %></h4>
-        <p><%= plant.family %></p>
-        <p><%= plant.species %></p>
-        <p><%= plant.genre %></p>
-        <p><%= plant.birthday %></p>
-        <p><%= plant.harvestday %></p>
-        <%= link_to "Delete", plant_path(plant), method: :delete, data: { confirm: "Are you sure?" } %>
-        <%= link_to "Edit", edit_plant_path(plant) %>
+      <div>
+        <a class="plant-card shadow d-flex flex-column justify-content-center align-items-center m-2">
+          <span class="plant-name"><%= plant.name %></span>
+          <span class="plant-birthday"><%= "#{distance_of_time_in_words(plant.birthday, DateTime.now)} old" %></span>
+        </a>
+        <% if plant.user == current_user %>
+          <div class="text-right small">
+            <%= link_to ('<i class="fas fa-pencil-alt"></i>').html_safe, edit_plant_path(plant) %>
+            <%= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, plant_path(plant), method: :delete, data: { confirm: "Are you sure?" } %>
+          </div>
+        <% end %>
       </div>
     <% end %>
     </div>
-      <%= link_to "Add plant", new_grow_plant_path(grow) %>
+      <% if grow.user == current_user %>
+        <% if grow.plants[0].present? %>
+          <%= link_to "Add Another Plant", new_grow_plant_path(grow) %>
+        <% else %>
+          <%= link_to "Add a Plant", new_grow_plant_path(grow) %>
+        <% end %>
+      <% end %>
   </div>

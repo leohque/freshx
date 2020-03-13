@@ -1,0 +1,24 @@
+.plant-card {
+  background: linear-gradient($light_green, $green);
+  width: 150px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  color:white !important;
+  padding: 0.5rem 0;
+  transition: 0.2s all;
+  .plant-name {
+    font-size:24px;
+  }
+  .plant-birthday {
+    font-size:16px;
+  }
+
+  span:hover {
+    color:white;
+  }
+}
+
+.plant-card:hover {
+  background: linear-gradient($green, $green);
+}

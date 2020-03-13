@@ -18,10 +18,10 @@
     <div>
       Grown by
       <div class="grow-users">
-            <%= cl_image_tag @grow.user.photo.key, class: 'avatar' %> <%= link_to @grow.user.username, user_profile_path(@grow.user) %>
+          <%= render 'users/profile_picture', user: @grow.user %> <%= link_to @grow.user.username, user_path(@grow.user) %>
         <% if @participating.present? %>
           <% @participating.each do |user| %>
-            <%= cl_image_tag user.photo.key, class: 'avatar' %> user.username
+            <%= render 'users/profile_picture', user: user %> <%= link_to user.username, user_path(user) %>
           <% end %>
         <% end %>
       </div>

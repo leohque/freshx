@@ -4,7 +4,7 @@
       <% if grow.photo.attached? %>
         <a href="<%= grow_path(grow) %>" class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path grow.photo.key %>)"><%= grow.name %></a>
       <% else %>
-        <a href="<%= grow_path(grow) %>" class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path 'default_banner.jpeg' %>')"><%= grow.name %></a>
+        <a href="<%= grow_path(grow) %>" class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path 'default_banner.jpeg' %>)"><%= grow.name %></a>
       <% end %>
     <% end %>
   <div class="text-right">
