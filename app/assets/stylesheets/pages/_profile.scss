@@ -1,3 +1,10 @@
 .container-profile {
   width:75%;
 }
+
+@media (max-width: 600px) {
+  .profile-avatar img {
+    width: 100px;
+    height: 100px;
+  }
+}

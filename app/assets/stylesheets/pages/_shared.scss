@@ -4,12 +4,34 @@ html {
   padding:0;
 }
 
+a {
+  color: #3B8514;
+}
+
+a, a:link, a:focus, a:active{
+  color: #3B8514;
+  text-decoration:none;
+  cursor: pointer;
+}
+
+a:hover{
+  color: $green;
+}
+
+a :hover {
+  color: $green
+}
+
 h2 {
   font-size:3rem;
 }
 
 h3 {
   font-size:2.5rem;
+}
+
+.container {
+  padding-bottom: 50px;
 }
 
 .container a {
@@ -19,8 +41,6 @@ h3 {
 .hidden {
   display: none;
 }
-
-
 
 .push-down {
   margin-top:1rem;

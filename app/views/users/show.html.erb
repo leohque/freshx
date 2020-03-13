@@ -5,62 +5,70 @@
     </div>
   </div>
  <%else%>
-  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('default-banner.jpeg')">
+  <div class="banner-user" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path 'default_banner.jpeg' %>')">
     <div class="text-white">
 
     </div>
   </div>
 <% end %>
 
-<div class="container-profile my-3 mx-auto">
+
+<div class="profile-edit text-right p-2 mr-2">
+  <% if @user == current_user %>
+    <%= link_to "Edit Profile", edit_profile_path %>
+  <% end %>
+</div>
+
+<div class="container-profile mx-auto">
   <div class="profile-header d-flex">
     <div class="wrapper">
         <div class="profile-avatar">
           <% if @user.photo.attached? %>
             <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3 rounded' %>
           <% else %>
-            <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3') %>
+            <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3 rounded') %>
           <% end %>
         </div>
     </div>
     <div class="profile-description flex-grow-1">
-      <h3>
+      <div class="profile-badges my-1">
+        <% if @user.groups %>
+          <% @user.groups.each do |group| %>
+            <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
+          <% end %>
+        <% end %>
+        <% if @user.participating_groups %>
+          <% @user.participating_groups.each do |group| %>
+            <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
+          <% end %>
+        <% end %>
+      </div>
+      <h2>
         <%= @user.username %>
         <% if current_user != @user %>
           <div id="follow-btn">
             <% if @following %>
-              <%= link_to "Unfollow", following_path(@following), method: :delete, remote: true %>
+              <%= link_to ('<i class="fas fa-minus"></i> Unfollow').html_safe, following_path(@following), method: :delete, remote: true %>
             <% else %>
-              <%= link_to "Follow", user_followings_path(@user), method: :post, remote: true %>
+              <%= link_to ('<i class="fas fa-plus"></i> Follow').html_safe, user_followings_path(@user), method: :post, remote: true %>
             <% end %>
           </div>
         <% end %>
-      </h3>
-      <h4>📍 <%= @user.location %></h4>
-      <div class="profile-badges my-1">
-            <% if @user.groups %>
-              <% @user.groups.each do |group| %>
-                <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
-              <% end %>
-            <% end %>
-            <% if @user.participating_groups %>
-              <% @user.participating_groups.each do |group| %>
-                <%= link_to cl_image_tag(group.badge.key, class: 'avatar-rounded'), group_path(group) %>
-              <% end %>
-            <% end %>
-          </div>
-    </div>
-    <div class="profile-edit">
-        <% if @user == current_user %>
-          <%= link_to "Edit Profile", edit_profile_path %>
-        <% end %>
+      </h2>
+      <p>📍<%= @user.location %></p>
     </div>
   </div>
+
   <div class="profile-bio mt-3">
     <p><%= @user.bio %></p>
   </div>
-  <div class="my-3">
-      <h2>Currently Growing</h2>
-      <%= render 'grows/display_grows', user: @user %>
-    </div>
+</div>
+
+<div class="posts-feed">
+  <div class="profile-grows">
+    <h2 class="text-center">Currently Growing</h2>
+    <%= render 'grows/display_grows', user: @user %>
+  </div>
+
+  <%= render 'posts/display_posts', posts: @user.posts, comment: @comment %>
 </div>

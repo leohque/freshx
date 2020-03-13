@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
   def index
     # @likes = Like.where(user: current_user)
+    @comment = Comment.new
     @likes = current_user.likes.order(created_at: :desc)
     @posts = []
     @likes.each do |like|
