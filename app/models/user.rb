@@ -50,4 +50,5 @@ validates :email,
   def following_record(user)
     followings_as_follower.find_by(user: user)
   end
+
 end

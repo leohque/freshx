@@ -27,6 +27,10 @@
   padding: 0;
 }
 
+.navbar-fresh :hover {
+  color: white;
+}
+
 .top-bar-item {
   font-size:1.3rem;
 }
@@ -39,6 +43,18 @@
   position: absolute;
 }
 
+.navbar-nav .dropdown-menu a {
+  color: #3B8514;
+}
+
+.navbar-nav .dropdown-menu :hover, :active{
+  color: $green;
+}
+
+.navbar-nav .dropdown-menu a {
+  background-color: white;
+}
+
 .nav-bottom {
   position:fixed;
   bottom:0;
@@ -47,7 +63,14 @@
   visibility: hidden;
   padding: 0.5rem 1rem;
   font-size:1.3rem;
-  a { color: white; }
+  a { color: white;
+      margin: 4px; }
+}
+
+.nav-bottom {
+  a:hover, a:active  {
+    color: white;
+  }
 }
 
 .nav-link {
