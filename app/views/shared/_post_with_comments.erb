@@ -1,9 +1,21 @@
-<div id="comment-<%= comment.id %>" class="card-post-comment mb-1">
-  <%= render 'users/profile_picture', user: comment.user %><strong><%= link_to comment.user.username, user_profile_path(comment.user) %></strong>: <%= comment.content_with_links.html_safe %>
-  <sup><%= "#{distance_of_time_in_words(comment.created_at, DateTime.now)} ago" %></sup>
-  <% if comment.user == current_user %>
-    <%= link_to ('<sup><i class="fas fa-trash-alt"></i></sup>').html_safe, comment_path(comment), method: :delete, remote: true %>
-  <% end %>
+<div id="comment-<%= comment.id %>" class="card-post-comment ml-4 mr-4 pt-2 mb-1 border-bottom">
+  <div class="comment-header d-flex align-items-center">
+    <div>
+      <%= render 'users/profile_picture', user: comment.user %>
+    </div>
+    <div class="comment-header-name d-flex flex-column pl-1">
+      <strong class="smaller"><%= link_to comment.user.username, user_profile_path(comment.user) %></strong>
+      <span class="x-small"><%= "#{distance_of_time_in_words(comment.created_at, DateTime.now)} ago" %></span>
+    </div>
+      <div class="flex-grow-1 text-right">
+        <% if comment.user == current_user %>
+          <%= link_to ('<i class="fas fa-trash-alt small"></i>').html_safe, comment_path(comment), method: :delete, remote: true %>
+        <% end %>
+      </div>
+  </div>
+    <div class="ml-6 my-2">
+        <%= comment.content_with_links.html_safe %>
+    </div>
 </div>
 
 <!-- ,data: { confirm: "Are you sure?" } -->
