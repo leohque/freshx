@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :likes, only: :create
   end
 
+  get "following", to: "posts#following", as: "following" #route to following view
+
   get 'users/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
   post 'users/edit_profile', to: 'users#update_profile'
 

@@ -1,0 +1,7 @@
+<%= render 'search' %>
+<%= render 'filters' %>
+<%= render 'geo_filters' %>
+
+<div class="posts-feed">
+  <%= render 'posts/display_posts', posts: @posts, comment: @comment %>
+</div>

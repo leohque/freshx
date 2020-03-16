@@ -6,7 +6,7 @@ class User < ApplicationRecord
             uniqueness: {:message => "Username already exisits. Please select a different one."},
             format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
-validates :email,
+  validates :email,
       presence: {:message => "Please enter your Email Address."},
       uniqueness: {:message => "Email Address already exisits. Please Login!"}
 

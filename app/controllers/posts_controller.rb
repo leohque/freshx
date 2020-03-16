@@ -15,6 +15,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def following
+    @comment = Comment.new
+    @posts = Post.where(user: current_user.followed_users)
+  end
+
   def nearby
     @comment = Comment.new
     @localusers = User.all.near("#{current_user.latitude}, #{current_user.longitude}")
