@@ -1,7 +1,6 @@
 <div class="new-group container my-3">
   <h2>Start a Group</h2>
-
-  <%= render 'form'  %>
+  <%= render 'form', group: @group %>
 </div>
 
 <%= link_to "Back to All Groups", groups_path %>
