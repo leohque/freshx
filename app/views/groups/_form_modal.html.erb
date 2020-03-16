@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for [@group] do |f| %>
+  <%= simple_form_for [group] do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :location, input_html: { class: 'address-search' } %>

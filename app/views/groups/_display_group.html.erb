@@ -1,0 +1,39 @@
+<div class="container-nav text-right">
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= cl_image_tag group.badge.key, width: 125, height: 125, class: 'rounded-circle' %>
+    </div>
+    <div class="d-flex flex-column justify-content-between">
+      <div>
+        <% if group.user == current_user %>
+          <%= link_to ('<i class="fas fa-pencil-alt pl-2"></i>').html_safe, edit_group_path(group) %>
+          <%= link_to ('<i class="fas fa-trash-alt pl-2"></i>').html_safe, group_path(group), method: :delete, data: { confirm: "Are you sure you want to delete this group?" } %>
+        <% end %>
+        <a data-dismiss="modal" aria-label="Close">
+          <i aria-hidden="true" class="fas fa-times pl-2 light-gray"></i>
+        </a>
+      </div>
+      <div>
+        <% unless current_user.participating_groups.include?(group) || group.user == current_user %>
+          <%= link_to "Join group", join_group_path(group), method: :post, class: 'btn btn-success text-white' %>
+        <% end %>
+
+        <% if current_user.participating_groups.include?(group) %>
+              <%= link_to "Leave group", leave_group_path(group), method: :delete, class: 'btn btn-success text-white' %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="group-info d-flex flex-column mt-2">
+    <h2><%= group.name %></h2>
+    <% if group.location.present? %>
+      <p>📍 <%= group.location %></p>
+    <% end %>
+    <p><%= group.description %></p>
+    <% if group.private? %>
+      <em>Private Group</em>
+    <% end %>
+</div>
