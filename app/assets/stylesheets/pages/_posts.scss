@@ -3,6 +3,23 @@
   margin:0 auto;
 }
 
+.post-grow-tag {
+  color: $green;
+  font-weight:500;
+}
+
+.fa-star {
+  font-size:20px;
+}
+
+.fa-pencil-alt, .fa-trash-alt {
+  color: $light-gray;
+}
+
+.fa-pencil-alt:hover, .fa-trash-alt:hover {
+  color: $light-green;
+}
+
 @media (max-width: 600px) {
   .posts-feed {
     width:100%;

@@ -1,3 +1,3 @@
-newElement =`<%= link_to ("<i class='far fa-heart'></i>").html_safe, post_likes_path(@post_id), id: @post_id, method: :post, remote: true %>`;
+newElement =`<%= link_to ("<i class='far fa-star'></i>").html_safe, post_likes_path(@post_id), id: @post_id, method: :post, remote: true %>`;
 
 document.getElementById("<%= @post_id %>").innerHTML = newElement;

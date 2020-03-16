@@ -15,9 +15,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
+  def nearby
     @comment = Comment.new
+    @localusers = User.all.near("#{current_user.latitude}, #{current_user.longitude}")
+    @localposts = Post.where(user: @localusers)
+  end
+
+  def show
+    @comment = Comment.new
+
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -42,9 +49,12 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
 
-    redirect_to @post
+    if @post.update(post_params)
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
   def destroy

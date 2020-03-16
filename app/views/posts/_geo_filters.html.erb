@@ -1,0 +1,10 @@
+<div class="container">
+  <div id="geo-filter">
+      <%= form_tag posts_path, method: :get, class: 'form-inline d-flex' do %>
+        <label for="distance">Distance</label>
+        <input type="range" min="0" max="100" class="custom-range" id="distance">
+      <% end %>
+  </div>
+</div>
+
+
