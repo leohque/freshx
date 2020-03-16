@@ -2,7 +2,7 @@
   <%= simple_form_for [@group] do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.input :location, input_html: { class: 'address-search' } %>
+    <%= f.input :location, input_html: { autocomplete: "location", class: 'address-search' }  %>
     <%= f.input :private %>
     <%= f.input :badge, label: "Group badge", as: :file %>
     <%= f.input :photo, label: "Cover photo", as: :file %>

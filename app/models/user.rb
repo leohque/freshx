@@ -10,7 +10,6 @@ class User < ApplicationRecord
         presence: {:message => "Please enter your Email Address."},
         uniqueness: {:message => "Email Address already exisits. Please Login!"}
 
-
   validates :location, presence: true
 
   devise :database_authenticatable, :registerable,
