@@ -1,11 +1,11 @@
 <div class="container">
-  <%= simple_form_for [@group] do |f| %>
+  <%= simple_form_for [group] do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :location %>
     <%= f.input :private %>
     <%= f.input :badge, label: "Group badge", as: :file %>
     <%= f.input :photo, label: "Cover photo", as: :file %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= f.button :submit, class: 'btn btn-success' %>
   <% end %>
 </div>

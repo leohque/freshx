@@ -14,7 +14,8 @@
 
   textarea {
     resize: none;
-    rows:1;
+    height:40px;
+    border-radius:3px 0 0 3px;
   }
 
   div {
@@ -24,5 +25,8 @@
 
   input {
     width:10%;
+    height:40px;
+    border-radius:0 3px 3px 0;
   }
+
 }

@@ -17,8 +17,8 @@ class PagesController < ApplicationController
         user_avatar = 'anon.jpg'
       end
        {
-        lat: user.latitude + rand(-0.02..0.02),
-        lng: user.longitude + rand(-0.02..0.02),
+        lat: user.latitude + rand(-0.01..0.01),
+        lng: user.longitude + rand(-0.01..0.01),
         infoWindow: render_to_string(partial: "users/info_window", locals: { user: user }),
         image_url: helpers.asset_url(user_avatar)
       }

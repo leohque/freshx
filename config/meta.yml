@@ -1,0 +1,6 @@
+# config/meta.yml
+meta_product_name: "Freshco"
+meta_title: "Freshco - Connect With Growers Around You"
+meta_description: "Organic, Fresh, Local, Sustainable"
+meta_image: "broc.png" # should exist in `app/assets/images/`
+twitter_account: "@leohque"   # required for Twitter Cards

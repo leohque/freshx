@@ -34,11 +34,9 @@ const initMapbox = () => {
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // defining the popup info window
       const element = document.createElement('div'); // this element is the custom marker
-      element.className = 'marker';
+      element.className = 'marker avatar';
       element.style.backgroundImage = `url('${marker.image_url}')`;
-      element.style.backgroundSize = 'contain';
-      element.style.width = '25px';
-      element.style.height = '25px';
+      element.style.backgroundSize = 'cover';
 
       new mapboxgl.Marker(element) // passing the custom marker as an element
       .setLngLat([ marker.lng, marker.lat ])
