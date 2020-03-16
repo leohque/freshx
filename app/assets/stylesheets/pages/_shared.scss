@@ -18,10 +18,6 @@ a:hover{
   color: $green;
 }
 
-a :hover {
-  color: $green
-}
-
 h2 {
   font-size:3rem;
 }
@@ -52,4 +48,15 @@ h3 {
 
 .smaller {
   font-size:14px;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+.light-gray {
+  color: $light-gray;
+}
+.light-gray:hover {
+  color: $light-green;
 }

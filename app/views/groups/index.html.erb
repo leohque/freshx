@@ -1,23 +1,58 @@
-<div class="container my-3">
+<div class="container my-3 text-center">
   <h2>Grow Community</h2>
-  <% @groups.each do |group| %>
-    <div>
-      <div class="group-header">
-        <h3>
-          <%= link_to group_path(group.id) do %>
-            <%= cl_image_tag group.badge.key, class: 'avatar-large mr-2' %> <%= group.name %>
-            <% if group.private? %>
-              <i class="fas fa-lock"></i>
-            <% end %>
-          <% end %>
-        </h3>
-      </div>
-      <p><%= group.description %></p>
-      <% if group.location.present? %>
-        <p>Location: <%= group.location %></p>
-      <% end %>
-    </div>
+
+  <%= link_to 'javascript:' do %>
+    <span class="btn btn-success text-white mt-2" data-toggle="modal" data-target="#createGroupModal">Create a Group</span>
   <% end %>
 
-  <%= link_to "Start a Group", new_group_path(@group) %>
+  <div class="group-list mt-5 d-flex flex-wrap justify-content-center align-items-center">
+    <% @groups.each do |group| %>
+      <div class="card w-25 m-2 p-2 shadow text-left">
+        <div class="group-header">
+          <h3>
+            <%= link_to 'javascript:' do %>
+              <span data-toggle="modal" data-target="#group<%= group.id %>modal">
+                <%= cl_image_tag group.badge.key, class: 'avatar-large mr-2' %>
+                <%= group.name %>
+                <% if group.private? %>
+                  <i class="fas fa-lock x-small"></i>
+                <% end %>
+              </span>
+            <% end %>
+          </h3>
+          <% if group.location.present? %>
+            <p>📍 <%= group.location %></p>
+          <% end %>
+        </div>
+      </div>
+      <!-- Group Modal -->
+      <div class="modal fade" id="group<%= group.id %>modal" tabindex="-1" role="dialog" aria-labelledby="group<%= group.id %>modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <%= render 'groups/display_group', group: group %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createGroupModal" tabindex="-1" role="dialog" aria-labelledby="createGroupModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="createPostLongTitle">Create a Group</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'groups/form_modal', group: Group.new %>
+      </div>
+    </div>
+  </div>
 </div>
