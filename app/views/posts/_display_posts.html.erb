@@ -53,7 +53,7 @@
       <div class="card-post-comment-box">
         <%= simple_form_for [post, comment], remote: true do |f| %>
           <%= f.input :content, placeholder: "Add a comment...", label: false %>
-          <%= f.button :submit, value: "Comment".html_safe, class: 'btn btn-success' %>
+          <%= f.button :submit, value: "X".html_safe, class: 'btn btn-success' %>
         <% end %>
       </div>
 
