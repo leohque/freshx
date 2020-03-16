@@ -10,6 +10,19 @@
   font-size:0.9rem;
 }
 
-.comment-content {
-  width:70%;
+.card-post-comment-box {
+
+  textarea {
+    resize: none;
+    rows:1;
+  }
+
+  div {
+    width:90%;
+    float:left;
+  }
+
+  input {
+    width:10%;
+  }
 }
