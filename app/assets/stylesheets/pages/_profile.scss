@@ -2,6 +2,12 @@
   width:75%;
 }
 
+.profile-avatar img {
+  width:150px;
+  height:150px;
+  border-radius: 5px;
+}
+
 @media (max-width: 600px) {
   .profile-avatar img {
     width: 100px;

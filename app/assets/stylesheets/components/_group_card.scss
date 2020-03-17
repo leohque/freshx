@@ -1,0 +1,9 @@
+.group-card {
+  width:25%;
+}
+
+@media (max-width: 600px) {
+  .group-card {
+    width:100%;
+  }
+}
