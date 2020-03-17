@@ -60,8 +60,15 @@
 
 <div class="posts-feed">
   <div class="profile-grows">
+    <% if @user.grows.present? %>
     <h2 class="text-center">Currently Growing</h2>
     <%= render 'grows/display_grows', user: @user %>
+    <% else %>
+      <% if @user === current_user %>
+        <h2 class="text-center">Are you growing anything?</h2>
+        <%= render 'grows/display_grows', user: @user %>
+      <% end %>
+    <% end %>
   </div>
 
   <%= render 'posts/display_posts', posts: @user.posts, comment: @comment %>

@@ -1,11 +1,11 @@
 <div class="container">
-  <%= simple_form_for [@group] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :location, input_html: { autocomplete: "location", class: 'address-search' }  %>
+  <%= simple_form_for [group] do |f| %>
+    <%= f.input :name, label: false, placeholder: "What's the group name?" %>
+    <%= f.input :description, label: false, placeholder: "Description?" %>
+    <%= f.input :location, label: false, placeholder: "Town / City", input_html: { class: 'address-search' } %>
     <%= f.input :private %>
-    <%= f.input :badge, label: "Group badge", as: :file %>
-    <%= f.input :photo, label: "Cover photo", as: :file %>
+    <%= f.input :badge, label: "Group Badge", as: :file %>
+    <%= f.input :photo, label: "Cover Photo", as: :file %>
     <%= f.button :submit, class: 'btn btn-success' %>
   <% end %>
 </div>

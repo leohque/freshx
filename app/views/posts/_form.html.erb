@@ -1,6 +1,6 @@
 <% if current_user %>
   <%= simple_form_for post do |f| %>
-    <%= f.input :content, label: false, input_html: { placeholder: 'What would you like to share?' } %>
+    <%= f.input :content, label: false, input_html: { placeholder: "You can write anything here." } %>
     <% if current_user.grows.present? %>
       <%= f.association :grow, label: false, collection: current_user.grows, selected: @grow.present? ? @grow.id : "", include_blank: 'Tag a Grow' %>
       <span id="place-for-plants-select"></span>

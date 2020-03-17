@@ -12,8 +12,10 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color:white !important;
+  transition:all 0.2s;
 }
 
 .grow-card:hover {
   text-decoration: none;
+  font-size:28px;
 }

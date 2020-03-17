@@ -5,17 +5,15 @@ html {
 }
 
 a {
-  color: #3B8514;
+  color: $light-green;
+  font-weight:500;
+  text-decoration:none;
 }
 
-a, a:link, a:focus, a:active{
-  color: #3B8514;
+a:focus, a:active, a:hover {
+  color: $green;
   text-decoration:none;
   cursor: pointer;
-}
-
-a:hover{
-  color: $green;
 }
 
 h2 {
@@ -37,10 +35,6 @@ h3 {
 .container-grow {
   width:75%;
   margin:0 auto;
-}
-
-.container a {
-  color: $green;
 }
 
 .hidden {
