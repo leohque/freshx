@@ -7,7 +7,7 @@
 <% end %>
 
 
-<div class="profile-edit text-right p-2 mr-2">
+<div class="profile-edit text-right p-2 mr-2 x-small">
   <% if @user == current_user %>
     <%= link_to "Edit Profile", edit_profile_path %>
   <% end %>
@@ -18,13 +18,13 @@
     <div class="wrapper">
         <div class="profile-avatar">
           <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3 profile-avatar' %>
+            <%= cl_image_tag @user.photo.key, class: 'mr-3 profile-avatar' %>
           <% else %>
-            <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3 profile-avatar') %>
+            <%= image_tag("anon.jpg",  class: 'mr-3 profile-avatar') %>
           <% end %>
         </div>
     </div>
-    <div class="profile-description flex-grow-1">
+    <div class="profile-description">
       <div class="profile-badges my-1">
         <% if @user.groups %>
           <% @user.groups.each do |group| %>
@@ -49,11 +49,11 @@
           </div>
         <% end %>
       </h2>
-      <p>📍<%= @user.location %></p>
     </div>
   </div>
 
-  <div class="profile-bio mt-3">
+  <div class="profile-bio mt-2">
+    <p>📍<%= @user.location %></p>
     <p><%= @user.bio %></p>
   </div>
 </div>
@@ -65,8 +65,10 @@
     <%= render 'grows/display_grows', user: @user %>
     <% else %>
       <% if @user === current_user %>
-        <h2 class="text-center">Are you growing anything?</h2>
-        <%= render 'grows/display_grows', user: @user %>
+        <div class="px-4 pb-4">
+          <h2 class="text-center">Are you growing anything?</h2>
+          <%= render 'grows/display_grows', user: @user %>
+        </div>
       <% end %>
     <% end %>
   </div>
