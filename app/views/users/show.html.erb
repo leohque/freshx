@@ -8,20 +8,35 @@
 
 
 <div class="profile-edit text-right p-2 mr-2 x-small">
-  <% if @user == current_user %>
-    <%= link_to "Edit Profile", edit_profile_path %>
-  <% end %>
+
 </div>
 
 <div class="container-profile mx-auto">
   <div class="profile-header d-flex">
     <div class="wrapper">
         <div class="profile-avatar">
+
+
+
+
           <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, class: 'mr-3 profile-avatar' %>
+            <% if @user == current_user %>
+              <%= link_to edit_profile_path do %>
+                <%= cl_image_tag @user.photo.key, class: 'mr-3 profile-avatar' %>
+              <% end %>
+            <% else %>
+              <%= cl_image_tag @user.photo.key, class: 'mr-3 profile-avatar' %>
+            <% end %>
           <% else %>
-            <%= image_tag("anon.jpg",  class: 'mr-3 profile-avatar') %>
+            <% if @user == current_user %>
+              <%= link_to edit_profile_path do %>
+                <%= image_tag("anon.jpg",  class: 'mr-3 profile-avatar') %>
+              <% end %>
+            <% else %>
+              <%= image_tag("anon.jpg",  class: 'mr-3 profile-avatar') %>
+            <% end %>
           <% end %>
+
         </div>
     </div>
     <div class="profile-description">
