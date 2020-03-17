@@ -2,6 +2,9 @@
   id="map"
   style="width: 100%; height: 95vh;"
   data-markers="<%= @markers.to_json %>"
+  data-localmarkers="<%= @localmarkers.to_json %>"
+  data-userlat="<%= current_user.latitude %>"
+  data-userlong="<%= current_user.longitude %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 

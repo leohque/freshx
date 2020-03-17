@@ -1,45 +1,46 @@
 <% if @grow.photo.attached? %>
   <div class="banner d-flex align-items-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url('<%= cl_image_path @grow.photo.key %>')">
-    <div class="container text-white">
-      <h2 class="text-center"><%= @grow.name %></h2>
+    <div class="container-banner text-white text-center">
+      <h2><%= @grow.name %></h2>
+      <p>📍 <%= @grow.location %></p>
     </div>
   </div>
 
 <%else%>
   <div class="banner d-flex align-items-end" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(<%= image_path 'default_banner.jpeg' %>)">
-    <div class="container text-white">
-      <h2 class="text-center"><%= @grow.name %></h2>
+    <div class="container-banner text-white text-center">
+      <h2><%= @grow.name %></h2>
+      <p>📍 <%= @grow.location %></p>
     </div>
   </div>
 <% end %>
 
-<div class="container">
-  <div class="container-header d-flex my-1">
+<div class="container-grow my-3">
+  <div class="container-header d-flex my-1 justify-content-between">
     <div>
-      Grown by
       <div class="grow-users">
-          <%= render 'users/profile_picture', user: @grow.user %> <%= link_to @grow.user.username, user_path(@grow.user) %>
+          <%= render 'users/profile_picture', user: @grow.user %> <strong><%= link_to @grow.user.username, user_path(@grow.user) %></strong>
         <% if @participating.present? %>
           <% @participating.each do |user| %>
-            <%= render 'users/profile_picture', user: user %> <%= link_to user.username, user_path(user) %>
+            <%= render 'users/profile_picture', user: user %> <strong><%= link_to user.username, user_path(user) %></strong>
           <% end %>
         <% end %>
       </div>
     </div>
-    <div class="flex-grow-1 text-center">
-      <p><%= @grow.description %></p>
-      <p>📍 <%= @grow.location %></p>
-    </div>
     <div>
       <% if @grow.user == current_user %>
-        <%= link_to "Delete", grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
-        <%= link_to "Edit", edit_grow_path(@grow) %>
+        <%= link_to ('<i class="fas fa-pencil-alt"></i>').html_safe, edit_grow_path(@grow) %>
+        <%= link_to ('<i class="fas fa-trash-alt"></i>').html_safe, grow_path(@grow), method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     </div>
   </div>
-  </div>
 
-  <%= render 'plants/display_plants', grow: @grow %>
+  <div class="text-center w-75 mx-auto">
+    <%= @grow.description %>
+  </div>
+</div>
+
+<%= render 'plants/display_plants', grow: @grow %>
 
 <div class="posts-feed">
   <%= render 'posts/display_posts', posts: Post.where(grow: @grow).order(created_at: :desc), comment: @comment %>

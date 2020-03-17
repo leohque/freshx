@@ -9,8 +9,25 @@ class PagesController < ApplicationController
 
   def map
     @users = User.geocoded #returns users with coordinates
+    @localusers = User.geocoded.near("#{current_user.latitude}, #{current_user.longitude}")
 
-    @markers = @users.map do |user|
+    @growers = @users.select do |user|
+      user.posts.present?
+    end
+
+    @localgrowers = @localusers.select do |user|
+      user.posts.present?
+    end
+
+
+    @localmarkers = @localgrowers.map do |grower|
+      {
+        lat: grower.latitude,
+        lng: grower.longitude
+      }
+    end
+
+    @markers = @growers.map do |user|
       if user.photo.attached?
         user_avatar = Cloudinary::Utils.cloudinary_url(user.photo.key, {})
       else

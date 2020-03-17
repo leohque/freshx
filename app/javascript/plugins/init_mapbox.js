@@ -7,14 +7,16 @@ const initMapbox = () => {
   const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+    map.fitBounds(bounds, { padding: 70, maxZoom: 13, duration: 0 });
   };
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/cleliabailly/ck7nmmcwi12ft1ipwb645cq6u' // TODO: edit style
+      center: [mapElement.dataset.userlat, mapElement.dataset.userlong],
+      style: 'mapbox://styles/cleliabailly/ck7nmmcwi12ft1ipwb645cq6u',
+      zoom: 10
     });
 
 
@@ -31,6 +33,7 @@ const initMapbox = () => {
 
     // Markers
     const markers = JSON.parse(mapElement.dataset.markers);
+    const localmarkers = JSON.parse(mapElement.dataset.localmarkers);
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // defining the popup info window
       const element = document.createElement('div'); // this element is the custom marker
@@ -44,7 +47,7 @@ const initMapbox = () => {
       .addTo(map);
     });
 
-    fitMapToMarkers(map, markers);
+    fitMapToMarkers(map, localmarkers);
   }
 
   // This auto-locates user after load

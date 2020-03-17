@@ -1,5 +1,18 @@
 .search {
+  margin:10px;
+  padding:0 0 0 5px;
+  color: $light-gray;
 
+  input {
+    padding: 0 5px;
+    border:none;
+    color: $light-gray;
+    width:50%;
+  }
+
+  input::placeholder {
+    color:$light-gray;
+  }
 }
 
 .filters a {
@@ -16,4 +29,14 @@
   text-decoration: none;
   color: white;
   background-color: $green;
+}
+
+@media (max-width: 600px) {
+  .search {
+    width:100%;
+    padding: 0 15px;
+    input {
+      width:90%;
+    }
+  }
 }

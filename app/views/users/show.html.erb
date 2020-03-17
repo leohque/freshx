@@ -18,9 +18,9 @@
     <div class="wrapper">
         <div class="profile-avatar">
           <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3 rounded' %>
+            <%= cl_image_tag @user.photo.key, width:150, height:150, class: 'mr-3 profile-avatar' %>
           <% else %>
-            <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3 rounded') %>
+            <%= image_tag("anon.jpg", width:150, height:150, class: 'mr-3 profile-avatar') %>
           <% end %>
         </div>
     </div>
