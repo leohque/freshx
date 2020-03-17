@@ -7,13 +7,43 @@
         <a href="<%= grow_path(grow) %>" class="grow-card mb-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= image_path 'default_banner.jpeg' %>)"><%= grow.name %></a>
       <% end %>
     <% end %>
-  <div class="text-right">
-    <%= link_to "Add another grow?", new_grow_path %>
-  </div>
+  <% if user === current_user %>
+    <div class="text-right">
+        <%= link_to 'javascript:' do %>
+          <span class="btn btn-success text-white mt-2" data-toggle="modal" data-target="#createGrowModal">
+            Add another grow?
+          </span>
+      <% end %>
+    </div>
+  <% end %>
 <% else %>
   <% if user == current_user %>
-    <p>No grows yet. <%= link_to "Add one?", new_grow_path %></p>
+    <p>
+      Nothing here yet! If you're growing anywhere, in home containers or a garden or even a farm...
+      <%= link_to 'javascript:' do %>
+        <span class="mt-2" data-toggle="modal" data-target="#createGrowModal">
+          start sharing here.
+        </span>
+    <% end %>
+  </p>
   <% else %>
-    <p>This user has not yet shared any grows.</p>
+    <p>Nothing growing here.</p>
   <% end %>
 <% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="createGrowModal" tabindex="-1" role="dialog" aria-labelledby="createGrowModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="createGrowLongTitle">Where Are You Growing</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <%= render 'grows/form_modal', grow: Grow.new %>
+      </div>
+    </div>
+  </div>
+</div>
