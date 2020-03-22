@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'pages#home'
-  get 'map', to: 'pages#map', as: 'map'
+  get 'comingsoon', to: 'pages#comingsoon'
+  get 'map', to: 'pages#map'
   get 'nearby', to: 'posts#nearby'
+  get "following", to: "posts#following"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :posts do
@@ -11,10 +13,11 @@ Rails.application.routes.draw do
     resources :likes, only: :create
   end
 
-  get "following", to: "posts#following", as: "following" #route to following view
+
 
   get 'users/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
   post 'users/edit_profile', to: 'users#update_profile'
+  get 'users/:user_id', to: 'users#show', as: 'user_profile'
 
 
   resources :users, shallow: true do
@@ -42,7 +45,6 @@ Rails.application.routes.draw do
 
   delete 'photo', to: 'posts#delete_photo', as: 'delete_photo'
 
- get 'users/:user_id', to: 'users#show', as: 'user_profile'
 
 
 
