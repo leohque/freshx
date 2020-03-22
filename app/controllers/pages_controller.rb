@@ -1,10 +1,15 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :comingsoon]
 
   def home
     if current_user.present?
       redirect_to posts_path
+    else
+      redirect_to comingsoon_path
     end
+  end
+
+  def comingsoon
   end
 
   def map

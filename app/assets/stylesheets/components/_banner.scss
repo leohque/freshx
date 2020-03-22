@@ -1,43 +1,49 @@
+
 .banner{
   height: 50vh;
   width: 100%;
   padding: 25px 0;
-}
-
-.banner img {
-  height: 50vh;
-  width: 100%;
-  object-fit: cover;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.banner-user {
-  height: 50vh !important;
   background-size: cover;
   background-position: center;
-}
-
-.banner {
-  background-size: cover;
-  background-position: center;
-}
-
-.banner h1 {
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
-}
 
-.banner p {
+  h1 {
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 48px;
+  font-weight: bold;
+  }
+
+  h2 {
+    font-family: $body-font;
+    font-size:32px;
+  }
+
+  p {
   font-size: 16px;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  img {
+  height: 50vh;
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  }
+}
+
+.banner-home {
+  height: 70vh;
+}
+
+.comingsoon {
+  height:100vh;
 }
 
 
