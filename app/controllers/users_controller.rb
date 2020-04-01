@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @comment = Comment.new
 
     @following = current_user.following_record(@user)
