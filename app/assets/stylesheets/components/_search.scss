@@ -13,6 +13,11 @@
   input::placeholder {
     color:$light-gray;
   }
+
+  input:focus {
+    box-shadow: none;
+    border: none;
+  }
 }
 
 .filters a {

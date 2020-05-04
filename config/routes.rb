@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'pages#home'
-  get 'comingsoon', to: 'pages#comingsoon'
   get 'map', to: 'pages#map'
   get 'nearby', to: 'posts#nearby'
   get "following", to: "posts#following"

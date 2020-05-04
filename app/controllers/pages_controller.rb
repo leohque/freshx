@@ -5,11 +5,8 @@ class PagesController < ApplicationController
     if current_user.present?
       redirect_to posts_path
     else
-      redirect_to comingsoon_path
+      redirect_to new_user_session_path
     end
-  end
-
-  def comingsoon
   end
 
   def map
