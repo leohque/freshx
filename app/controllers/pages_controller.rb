@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :comingsoon]
+  skip_before_action :authenticate_user!, only: [:home, :show]
 
   def home
     if current_user.present?
