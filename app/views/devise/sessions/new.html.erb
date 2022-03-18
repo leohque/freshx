@@ -2,7 +2,10 @@
   <div class="banner height100" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path 'default_banner.jpeg' %>')">
   </div>
   <div class="container">
-    <h2>Log in</h2>
+    <h2>Log in (PROTOTYPE)</h2>
+    <h2>(You can use the following dummy account:<br>
+      user: test@test.com<br>
+    password: testing)</h2>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
