@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dej58qlfl
+  api_key: '193865195921254'
+  api_secret: oiH-6BJQ0Ln07k8MReJJewFlNhI
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dej58qlfl
+  api_key: '193865195921254'
+  api_secret: oiH-6BJQ0Ln07k8MReJJewFlNhI
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dej58qlfl
+  api_key: '193865195921254'
+  api_secret: oiH-6BJQ0Ln07k8MReJJewFlNhI
+  enhance_image_tag: true
+  static_file_support: false

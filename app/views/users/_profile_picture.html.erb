@@ -1,6 +1,6 @@
 <%= link_to user_path(user) do %>
   <% if user.photo.attached? %>
-    <%= cl_image_tag user.photo.key, class: "avatar" %>
+    <%= cl_image_tag user.photo.key, class: "avatar", :cloud_name => 'dej58qlfl' %>
   <% else %>
     <%= image_tag("anon.jpeg", class: "avatar") %>
   <% end %>
