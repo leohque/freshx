@@ -4,8 +4,8 @@ class PagesController < ApplicationController
   def home
     if current_user.present?
       redirect_to posts_path
-    else
-      redirect_to new_user_session_path
+    # else
+    #  redirect_to new_user_session_path
     end
   end
 
